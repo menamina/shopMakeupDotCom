@@ -11,6 +11,22 @@ function App() {
   const [cleanBeauty, updateCleanBeauty] = useState([]);
   const [apiErr, updateApiErr] = useState("");
 
+  const [openMenu, setOpenMenu] = useState(null);
+
+  function handleShopClick(name){
+
+
+  }
+
+  const setMenuOpenClose(name){
+    setOpenMenu((prev) => name);
+    if (openMenu !== "null"){
+      handleShopClick(name)
+    }
+
+  }
+
+
   function noDupes(list) {
     const noDuplicate = [...new Set(list)];
     return noDuplicate;
@@ -45,8 +61,14 @@ function App() {
   }, []);
 
   return (
-    <div className="archContainer">
-      <Navi />
+    <div className="archContainer" onClick={() => setMenuOpenClose("null")}>
+      <Navi
+        byBrand={brands}
+        byCategory={categories}
+        byCleanBeauty={cleanBeauty}
+        allProducts={products}
+        menuState = {setMenuOpenClose}
+      />
       <HomePage />
       <Footer />
     </div>

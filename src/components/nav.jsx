@@ -2,7 +2,14 @@ import Cake from "../imgs/cake.png";
 import Login from "../imgs/profile.svg";
 import Bag from "../imgs/shoppingBag.svg";
 
-export default function Navi() {
+export default function Navi({
+  byBrand,
+  byCategory,
+  byCleanBeauty,
+  allProducts,
+  menuState,
+  isOpen,
+}) {
   return (
     <nav className="naviHolder">
       <div className="preShop">
@@ -24,9 +31,29 @@ export default function Navi() {
             <p>Cakeface.</p>
           </div>
           <div>
-            <p className="shopCategories">Brands</p>
-            <p className="shopCategories">Category</p>
-            <p className="shopCategories">Clean Beauty</p>
+            <p
+              className={isOpen === "brands" ? "dropdownShow" : "dropdownHide"}
+              onClick={() => menuState("brands")}
+            >
+              Brands
+            </p>
+
+            <p
+              className={
+                openMenu === "category" ? "dropdownShow" : "dropdownHide"
+              }
+              onClick={() => menuState("category")}
+            >
+              Category
+            </p>
+            <p
+              className={
+                openMenu === "clean beauty" ? "dropdownShow" : "dropdownHide"
+              }
+              onClick={() => menuState("clean beauty")}
+            >
+              Clean Beauty
+            </p>
           </div>
         </div>
         <div className="rNavi">
