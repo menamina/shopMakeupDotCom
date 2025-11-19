@@ -2,7 +2,6 @@ import Cake from "./cake.png";
 import Login from "./profile.svg";
 import Bag from "./shoppingBag.svg";
 
-//  make functions for updating state + pass those into the onClick
 
 export function Navi(itemClick, updateItemClick, updateHomePage) {
   return (
