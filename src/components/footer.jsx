@@ -1,6 +1,6 @@
-import Cake from "./cake.png";
-import Email from "./email.svg";
-import Phone from "./phone.svg";
+import Cake from "../imgs/cake.png";
+import Email from "../imgs/email.svg";
+import Phone from "../imgs/phone.svg";
 
 export default function Footer() {
   <div className="footerHolder">

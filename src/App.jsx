@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import Navi from "./nav.jsx";
+import Navi from "./components/nav.jsx";
 import HomePage from "./components/homepage.jsx";
-import Clicked from "./components/clicked.jsx";
 import Footer from "./components/footer.jsx";
 
 function App() {
@@ -12,6 +11,16 @@ function App() {
   const [cleanBeauty, updateCleanBeauty] = useState([]);
   const [apiErr, updateApiErr] = useState("");
 
+  function noDupes(list) {
+    const noDuplicate = [...new Set(list)];
+    return noDuplicate;
+  }
+
+  function noNull(list) {
+    const noNull = list.filter(Boolean);
+    return noNull;
+  }
+
   useEffect(() => {
     async function makeupAPI() {
       try {
@@ -21,20 +30,19 @@ function App() {
         const result = await apiLink.json();
         const productList = result.map((item) => item);
         const brandList = result.map((item) => item.brand);
-        const categoryList = result.map((item) => item.product_category);
-        const tagList = result.map((item) => item.tag_list);
+        const categoryList = result.map((item) => item.category);
+        const tagList = noDupes(result.flatMap((item) => item.tag_list));
 
         updateProducts(productList);
-        updateBrands(brandList);
-        updateCategories(categoryList);
-        updateCleanBeauty(tagList);
-
-        console.log(brands, categories, cleanBeauty, apiErr);
+        updateBrands(noDupes(brandList));
+        updateCategories(noDupes(categoryList));
+        updateCleanBeauty(noNull(tagList));
       } catch (error) {
         updateApiErr(error);
       }
     }
-    makeupAPI;
+    makeupAPI();
+    console.log(products, brands, categories, cleanBeauty, apiErr);
   }, []);
 
   return (

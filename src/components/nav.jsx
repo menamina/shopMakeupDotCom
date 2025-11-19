@@ -1,9 +1,8 @@
-import Cake from "./cake.png";
-import Login from "./profile.svg";
-import Bag from "./shoppingBag.svg";
+import Cake from "../imgs/cake.png";
+import Login from "../imgs/profile.svg";
+import Bag from "../imgs/shoppingBag.svg";
 
-
-export function Navi(itemClick, updateItemClick, updateHomePage) {
+export default function Navi() {
   return (
     <nav className="naviHolder">
       <div className="preShop">
