@@ -2,7 +2,9 @@ import Cake from "./cake.png";
 import Login from "./profile.svg";
 import Bag from "./shoppingBag.svg";
 
-export function Navi() {
+//  make functions for updating state + pass those into the onClick
+
+export function Navi(itemClick, updateItemClick, updateHomePage) {
   return (
     <nav className="naviHolder">
       <div className="preShop">
@@ -16,7 +18,13 @@ export function Navi() {
       </div>
       <div className="navi">
         <div className="lNavi">
-          <img src={Cake} alt="white cake with strawberrys on top - logo"></img>
+          <div className="logoNav">
+            <img
+              src={Cake}
+              alt="white cake with strawberrys on top - brand logo"
+            ></img>
+            <p>Cakeface.</p>
+          </div>
           <div>
             <p className="shopCategories">Brands</p>
             <p className="shopCategories">Category</p>
