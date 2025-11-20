@@ -13,8 +13,10 @@ function App() {
   const [apiErr, updateApiErr] = useState("");
 
   const [cartTotal, updateCartTotal] = useState(0);
-  const [cartItems, updateCartItems] = useState({});
+  const [cartItems, updateCartItems] = useState([]);
   const [openMenu, setOpenMenu] = useState(null);
+
+  function updateCart(product, qty) {}
 
   function setMenuOpenClose(name) {
     setOpenMenu((prev) => name);
@@ -72,16 +74,13 @@ function App() {
         cartTotal={cartTotal}
       />
       <Outlet
-        context={
-          (products,
+        context={{
+          products,
           brands,
           categories,
           cleanBeauty,
-          cartTotal,
-          updateCartTotal,
-          cartItems,
-          updateCartItems)
-        }
+          updateCart,
+        }}
       />
       <Footer />
     </div>

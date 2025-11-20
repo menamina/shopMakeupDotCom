@@ -2,7 +2,7 @@ import { useParams, useOutletContext } from "react-router";
 
 export default function Brand() {
   const { brand } = useParams();
-  const { products } = useOutletContext();
+  const { products, updateCart } = useOutletContext();
   const specificBrandProducts = products.filter((obj) => obj.brand === brand);
 
   return (
@@ -20,7 +20,7 @@ export default function Brand() {
             <p>Add</p>
             <input
               type="number"
-              onChange={(e) => updateCart(e.target.value)}
+              onChange={(e) => updateCart(item, e.target.value)}
             ></input>
             <p>to bag</p>
           </div>
