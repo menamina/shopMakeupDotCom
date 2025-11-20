@@ -82,10 +82,12 @@ export default function Navi({
         </div>
         <div className="rNavi">
           <img src={Login} alt="login icon"></img>
-          <div className="cartHolder">
-            <div>{cartTotal === 0 ? "" : cartTotal}</div>
-            <img src={Bag} alt="shopping cart icon"></img>
-          </div>
+          <Link to={`/Cart`} className="cart">
+            <div className="cartHolder">
+              <div>{cartTotal === 0 ? "" : cartTotal}</div>
+              <img src={Bag} alt="shopping cart icon"></img>
+            </div>
+          </Link>
         </div>
       </div>
     </nav>

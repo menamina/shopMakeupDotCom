@@ -13,6 +13,7 @@ function App() {
   const [apiErr, updateApiErr] = useState("");
 
   const [cartTotal, updateCartTotal] = useState(0);
+  const [cartItems, updateCartItems] = useState({});
   const [openMenu, setOpenMenu] = useState(null);
 
   function setMenuOpenClose(name) {
@@ -77,7 +78,9 @@ function App() {
           categories,
           cleanBeauty,
           cartTotal,
-          updateCartTotal)
+          updateCartTotal,
+          cartItems,
+          updateCartItems)
         }
       />
       <Footer />
