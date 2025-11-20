@@ -8,7 +8,7 @@ export default function BrandPage() {
   return (
     <div className="Brands">
       {specificBrandProducts.map((item) => (
-        <div className="BrandHolder">
+        <div className="BrandHolder" key={item.brand}>
           <img
             src={item.image_link}
             alt={`${item.brand} ${item.category}`}

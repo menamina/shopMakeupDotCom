@@ -41,7 +41,11 @@ export default function Navi({
               }`}
             >
               {byBrand.map((brand) => (
-                <Link to={`/Brand/${brand}`} className="dropdownItem">
+                <Link
+                  to={`/Brand/${brand}`}
+                  className="dropdownItem"
+                  key={brand}
+                >
                   {brand}
                 </Link>
               ))}
@@ -56,7 +60,11 @@ export default function Navi({
               }`}
             >
               {byCategory.map((category) => (
-                <Link to={`/Category/${category}`} className="dropdownItem">
+                <Link
+                  to={`/Category/${category}`}
+                  className="dropdownItem"
+                  key={category}
+                >
                   {category}
                 </Link>
               ))}
@@ -73,7 +81,11 @@ export default function Navi({
               }`}
             >
               {byCleanBeauty.map((tag) => (
-                <Link to={`/CleanBeautyTags/${tag}`} className="dropdownItem">
+                <Link
+                  to={`/CleanBeautyTags/${tag}`}
+                  className="dropdownItem"
+                  key={tag}
+                >
                   {tag}
                 </Link>
               ))}
