@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router";
 import Navi from "./components/nav.jsx";
 import HomePage from "./components/homepage.jsx";
 import Footer from "./components/footer.jsx";
@@ -51,7 +52,7 @@ function App() {
   }, []);
 
   return (
-    <div className="archContainer" onClick={() => setMenuOpenClose("null")}>
+    <div className="archContainer">
       <Navi
         byBrand={brands}
         byCategory={categories}
@@ -60,7 +61,7 @@ function App() {
         menuState={setMenuOpenClose}
         isOpen={openMenu}
       />
-      <HomePage />
+      <Outlet context={(products, brands, categories, cleanBeauty)} />
       <Footer />
     </div>
   );
