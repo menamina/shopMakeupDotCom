@@ -13,19 +13,9 @@ function App() {
 
   const [openMenu, setOpenMenu] = useState(null);
 
-  function handleShopClick(name){
-
-
-  }
-
-  const setMenuOpenClose(name){
+  function setMenuOpenClose(name) {
     setOpenMenu((prev) => name);
-    if (openMenu !== "null"){
-      handleShopClick(name)
-    }
-
   }
-
 
   function noDupes(list) {
     const noDuplicate = [...new Set(list)];
@@ -67,7 +57,8 @@ function App() {
         byCategory={categories}
         byCleanBeauty={cleanBeauty}
         allProducts={products}
-        menuState = {setMenuOpenClose}
+        menuState={setMenuOpenClose}
+        isOpen={openMenu}
       />
       <HomePage />
       <Footer />

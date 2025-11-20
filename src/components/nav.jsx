@@ -1,6 +1,7 @@
 import Cake from "../imgs/cake.png";
 import Login from "../imgs/profile.svg";
 import Bag from "../imgs/shoppingBag.svg";
+import { Link } from "react-router";
 
 export default function Navi({
   byBrand,
@@ -31,29 +32,52 @@ export default function Navi({
             <p>Cakeface.</p>
           </div>
           <div>
-            <p
-              className={isOpen === "brands" ? "dropdownShow" : "dropdownHide"}
-              onClick={() => menuState("brands")}
-            >
+            <p className="shopCategories" onClick={() => menuState("brands")}>
               Brands
             </p>
-
-            <p
-              className={
-                openMenu === "category" ? "dropdownShow" : "dropdownHide"
-              }
-              onClick={() => menuState("category")}
+            <div
+              className={`dropdownBrands ${
+                isOpen === "brands" ? "show" : "hide"
+              }`}
             >
+              {byBrand.map((brand) => (
+                <Link to={`/Brand/${brand}`} className="dropdownItem">
+                  {brand}
+                </Link>
+              ))}
+            </div>
+
+            <p className="shopCategories" onClick={() => menuState("category")}>
               Category
             </p>
+            <div
+              className={`dropdownCategory ${
+                isOpen === "category" ? "show" : "hide"
+              }`}
+            >
+              {byCategory.map((category) => (
+                <Link to={`/Category/${category}`} className="dropdownItem">
+                  {category}
+                </Link>
+              ))}
+            </div>
             <p
-              className={
-                openMenu === "clean beauty" ? "dropdownShow" : "dropdownHide"
-              }
+              className="shopCategories"
               onClick={() => menuState("clean beauty")}
             >
               Clean Beauty
             </p>
+            <div
+              className={`dropdownClean ${
+                isOpen === "clean beauty" ? "show" : "hide"
+              }`}
+            >
+              {byCleanBeauty.map((tag) => (
+                <Link to={`/CleanBeautyTags/${tag}`} className="dropdownItem">
+                  {tag}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
         <div className="rNavi">
