@@ -12,6 +12,7 @@ function App() {
   const [cleanBeauty, updateCleanBeauty] = useState([]);
   const [apiErr, updateApiErr] = useState("");
 
+  const [cartTotal, updateCartTotal] = useState(0);
   const [openMenu, setOpenMenu] = useState(null);
 
   function setMenuOpenClose(name) {
@@ -36,20 +37,28 @@ function App() {
         const result = await apiLink.json();
         const productList = result;
         const brandList = noDupes(noNull(result.map((item) => item.brand)));
-        const categoryList = noNull(result.map((item) => item.category));
+        const categoryList = result.map((item) => item.category);
+        const cleanedCategoryList = categoryList
+          .filter(Boolean)
+          .map((x) => x.trim())
+          .map((x) => x.toLowerCase())
+          .map((x) => x.replaceAll("_", " "));
+        const finalCat = [...new Set(cleanedCategoryList)];
         const tagList = noDupes(result.flatMap((item) => item.tag_list));
 
         updateProducts(productList);
         updateBrands(brandList);
-        updateCategories(categoryList);
+        updateCategories(finalCat);
         updateCleanBeauty(tagList);
       } catch (error) {
         updateApiErr(error);
       }
     }
     makeupAPI();
-    console.log(products, brands, categories, cleanBeauty, apiErr);
   }, []);
+  useEffect(() => {
+    console.log("UPDATED:", products, brands, categories, cleanBeauty);
+  }, [products, brands, categories, cleanBeauty]);
 
   return (
     <div className="archContainer">
@@ -57,11 +66,20 @@ function App() {
         byBrand={brands}
         byCategory={categories}
         byCleanBeauty={cleanBeauty}
-        allProducts={products}
         menuState={setMenuOpenClose}
         isOpen={openMenu}
+        cartTotal={cartTotal}
       />
-      <Outlet context={(products, brands, categories, cleanBeauty)} />
+      <Outlet
+        context={
+          (products,
+          brands,
+          categories,
+          cleanBeauty,
+          cartTotal,
+          updateCartTotal)
+        }
+      />
       <Footer />
     </div>
   );

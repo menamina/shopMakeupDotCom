@@ -7,9 +7,9 @@ export default function Navi({
   byBrand,
   byCategory,
   byCleanBeauty,
-  allProducts,
   menuState,
   isOpen,
+  cartTotal,
 }) {
   return (
     <nav className="naviHolder">
@@ -82,7 +82,10 @@ export default function Navi({
         </div>
         <div className="rNavi">
           <img src={Login} alt="login icon"></img>
-          <img src={Bag} alt="shopping cart icon"></img>
+          <div className="cartHolder">
+            <div>{cartTotal === 0 ? "" : cartTotal}</div>
+            <img src={Bag} alt="shopping cart icon"></img>
+          </div>
         </div>
       </div>
     </nav>
