@@ -1,0 +1,21 @@
+.naviHolder,
+.naviHolder > div,
+.TrackGift,
+.navi > div {
+  display: flex;
+}
+
+.naviHolder {
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.cake,
+.login,
+.bag {
+  height: 100%;
+  width: 150px;
+}
