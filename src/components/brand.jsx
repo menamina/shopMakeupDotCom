@@ -1,9 +1,9 @@
 import { useParams, useOutletContext } from "react-router";
 
-export default function Brand() {
-  const { brand } = useParams();
+export default function BrandPage() {
+  const { bname } = useParams();
   const { products, updateCart } = useOutletContext();
-  const specificBrandProducts = products.filter((obj) => obj.brand === brand);
+  const specificBrandProducts = products.filter((obj) => obj.brand === bname);
 
   return (
     <div className="Brands">

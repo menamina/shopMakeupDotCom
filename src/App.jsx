@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import Navi from "./components/nav.jsx";
-import HomePage from "./components/homepage.jsx";
 import Footer from "./components/footer.jsx";
+
+export function noDupes(list) {
+  const noDuplicate = [...new Set(list)];
+  return noDuplicate;
+}
+
+export function noNull(list) {
+  return list.filter((item) => item !== null && item !== "");
+}
 
 function App() {
   const [products, updateProducts] = useState([]);
@@ -16,19 +24,15 @@ function App() {
   const [cartItems, updateCartItems] = useState([]);
   const [openMenu, setOpenMenu] = useState(null);
 
-  function updateCart(product, qty) {}
+  function updateCart(product, qty) {
+    updateCartItems((prev) => [...prev, { item: product, quant: qty }]);
+    // we want to loop through cart items take the quantity + to
+    const total = cartItems.reduce((accum, next) => accum + next.quant, 0);
+    updateCartTotal(total);
+  }
 
   function setMenuOpenClose(name) {
     setOpenMenu((prev) => name);
-  }
-
-  function noDupes(list) {
-    const noDuplicate = [...new Set(list)];
-    return noDuplicate;
-  }
-
-  function noNull(list) {
-    return list.filter((item) => item !== null && item !== "");
   }
 
   useEffect(() => {

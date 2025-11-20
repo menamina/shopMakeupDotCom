@@ -2,8 +2,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App";
-import Navi
 import HomePage from "./homepage";
+import BrandPage from "./brand";
+import CategoryPage from "./CategoryPage";
+import TagsPage from "./TagsPage";
+import Cart from "./Cart";
 
 const router = createBrowserRouter([
   {
@@ -11,10 +14,10 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "Brand/:name", element: <BrandPage /> },
-      { path: "Category/:name", element: <CategoryPage /> },
-      { path: "Tags/:name", element: <TagsPage /> }
-      { path: "Cart" element: <Cart/>}
+      { path: "Brand/:bname", element: <BrandPage /> },
+      { path: "Category/:cname", element: <CategoryPage /> },
+      { path: "Tags/:tname", element: <TagsPage /> }
+      { path: "Cart", element: <Cart/>}
     ]
   }
 ]);
