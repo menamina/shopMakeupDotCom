@@ -1,6 +1,10 @@
 import Cake from "../imgs/cake.png";
 import Email from "../imgs/email.svg";
 import Phone from "../imgs/phone.svg";
+import Insta from "../imgs/insta.svg";
+import Tiktok from "../imgs/tiktok.svg";
+import X from "../imgs/x.svg";
+import Youtube from "../imgs/youtube.svg";
 import styles from "../css/footer.module.css";
 
 export default function Footer() {
@@ -8,7 +12,7 @@ export default function Footer() {
     <div className={styles.footerHolder}>
       <div className={styles.foot1}>
         <img className={styles.cake} src={Cake} alt="cake brand logo"></img>
-        <div>
+        <div className={styles.values}>
           <img className={styles.email} src={Email} alt="email logo"></img>
           <input
             type="email"
@@ -17,7 +21,7 @@ export default function Footer() {
           />
         </div>
         <div className={styles.emptyDiv}></div>
-        <div>
+        <div className={styles.values}>
           <img className={styles.phone} src={Phone} alt="phone logo"></img>
           <input
             type="email"
@@ -40,20 +44,20 @@ export default function Footer() {
       <div className={styles.foot4}>
         <p className={styles.footerTitle}>FOLLOW US</p>
         <div>
-          <img></img>
+          <img src={Insta} className={styles.socials}></img>
           <p>Instagram</p>
         </div>
         <div>
-          <img></img>
+          <img src={X} className={styles.socials}></img>
           <p>X</p>
         </div>
         <div>
-          <img></img>
+          <img src={Youtube} className={styles.socials}></img>
           <p>Youtube</p>
-          <div>
-            <img></img>
-            <p>Tiktok</p>
-          </div>
+        </div>
+        <div>
+          <img src={Tiktok} className={styles.socials}></img>
+          <p>Tiktok</p>
         </div>
       </div>
     </div>

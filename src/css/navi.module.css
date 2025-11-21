@@ -96,3 +96,9 @@
 .rNavi {
   gap: 20px;
 }
+
+.shopCategories:hover,
+.track:hover,
+.gift:hover {
+  cursor: pointer;
+}

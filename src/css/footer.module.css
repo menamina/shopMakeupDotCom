@@ -1,9 +1,21 @@
-.footerHolder {
+.footerHolder,
+.foot1,
+.foot4 > div,
+.values {
   display: flex;
 }
 
-.footerHolder {
+.foot1 {
+  flex-direction: column;
+}
+
+.footerHolder,
+.foot4 > div {
   align-items: center;
+}
+
+.foot4 > div {
+  justify-content: flex-start;
 }
 
 .footerHolder {
@@ -16,19 +28,61 @@
 /* imgs */
 
 .cake {
-  height: 70px;
+  height: 80px;
+  width: 60px;
+  padding-bottom: 20px;
 }
 
 .email,
-.phone {
+.phone,
+.socials {
   height: 25px;
   filter: invert(1);
 }
 
-p {
-  color: white;
+.values {
+  gap: 15px;
+}
+
+.foot1,
+.foot4 > div {
+  gap: 10px;
+}
+
+.emptyDiv {
+  width: 100%;
+  border: 1px solid white;
 }
 
 p.footerTitle {
   color: gray;
+}
+
+.foot2 p:not(:first-child),
+.foot3 p:not(:first-child),
+.foot4 p:not(:first-child) {
+  color: white;
+}
+
+.foot2 p:not(:first-child):hover,
+.foot3 p:not(:first-child):hover,
+.foot4 p:not(:first-child):hover {
+  cursor: pointer;
+}
+
+.foot2 p:first-child,
+.foot3 p:first-child,
+.foot4 p:first-child {
+  padding-bottom: 30px;
+}
+
+input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+input::placeholder {
+  color: white;
 }
