@@ -1,7 +1,9 @@
+import styles from "../css/homepage.module.css";
+
 export default function HomePage() {
   return (
     <div>
-      <img src="" alt="" />
+      <div className={styles.imgTainer}></div>
       <div>
         <p>New + Featured</p>
       </div>
