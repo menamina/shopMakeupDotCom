@@ -14,7 +14,7 @@ export default function Navi({
 }) {
   return (
     <nav className={styles.naviHolder}>
-      <div className={styles.preShop}>
+      <div className={styles.preShop} onClick={() => menuState(null)}>
         <div>
           <p>Free shipping on all orders!</p>
         </div>
@@ -27,14 +27,13 @@ export default function Navi({
       <div className={styles.navi}>
         <div className={styles.lNavi}>
           <div className={styles.logoNav}>
-            <Link to="/">
+            <Link to="/" onClick={() => menuState(null)}>
               <img
                 className={styles.cake}
                 src={Cake}
                 alt="white cake with strawberrys on top - brand logo"
               ></img>
             </Link>
-            <p className={styles.cakeFace}>Cakeface.</p>
           </div>
           <div className={styles.navLinks}>
             <p
@@ -77,17 +76,17 @@ export default function Navi({
       </div>
 
       <div className={styles.displayNavClick}>
-        {isOpen === "clean beauty" && (
-          <div className={styles.allNavsClicked}>
+        {isOpen === "clean beauty" ? (
+          <div className={`${styles.allNavsClicked} ${styles.show}`}>
             {byCleanBeauty.map((tag) => (
               <Link to={`/Tags/${tag}`} className={styles.tag} key={tag}>
                 {tag}
               </Link>
             ))}
           </div>
-        )}
+        ) : null}
 
-        {isOpen === "brands" && (
+        {isOpen === "brands" ? (
           <div className={styles.allNavsClicked}>
             {byBrand.map((brand) => (
               <Link to={`/Brand/${brand}`} className={styles.brand} key={brand}>
@@ -95,9 +94,9 @@ export default function Navi({
               </Link>
             ))}
           </div>
-        )}
+        ) : null}
 
-        {isOpen === "category" && (
+        {isOpen === "category" ? (
           <div className={styles.allNavsClicked}>
             {byCategory.map((cat) => (
               <Link to={`/Category/${cat}`} className={styles.cat} key={cat}>
@@ -105,7 +104,7 @@ export default function Navi({
               </Link>
             ))}
           </div>
-        )}
+        ) : null}
       </div>
     </nav>
   );

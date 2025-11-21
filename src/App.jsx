@@ -85,6 +85,7 @@ function App() {
           categories,
           cleanBeauty,
           updateCart,
+          setOpenMenu,
         }}
       />
       <Footer />

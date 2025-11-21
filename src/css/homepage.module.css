@@ -1,4 +1,18 @@
 .imgTainer {
+  display: flex;
+}
+.imgTainer {
+  justify-content: center;
+  align-items: center;
+}
+
+.cakeFace {
+  font-size: 8rem;
+  font-style: italic;
+  color: rgb(151, 149, 149);
+}
+
+.imgTainer {
   background-image: url("../imgs/impres.jpg");
   height: 700px;
 }
