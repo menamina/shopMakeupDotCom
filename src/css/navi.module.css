@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: rgb(94, 92, 92);
 }
 
 .naviHolder,
@@ -11,17 +12,21 @@
 .lNavi,
 .rNavi,
 .logoNav,
-.navLinks {
+.navLinks,
+.allNavsClicked {
   display: flex;
 }
 
 .naviHolder,
-.logoNav {
+.logoNav,
+.show,
+.allNavsClicked {
   flex-direction: column;
 }
 
 .naviHolder,
 .rNavi,
+.lNavi,
 .navLinks {
   align-items: center;
 }
@@ -40,7 +45,12 @@
 }
 
 .preShop {
+  font-size: 0.85rem;
   width: 100%;
+}
+
+.TrackGift {
+  gap: 20px;
 }
 
 .navi {
@@ -50,12 +60,12 @@
   border-bottom: 1px solid rgb(210, 210, 210);
 }
 
-.hidden {
-  display: none;
+.cakeFace {
+  font-style: italic;
 }
 
-.preShop {
-  width: 100%;
+.hidden {
+  display: none;
 }
 
 .preShop {
@@ -79,10 +89,10 @@
   gap: 40px;
 }
 
-.rNavi {
-  gap: 20px;
-}
-
 .lNavi {
   gap: 4rem;
+}
+
+.rNavi {
+  gap: 20px;
 }

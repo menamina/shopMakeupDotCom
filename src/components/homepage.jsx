@@ -1,3 +1,10 @@
 export default function HomePage() {
-  return <div></div>;
+  return (
+    <div>
+      <img src="" alt="" />
+      <div>
+        <p>New + Featured</p>
+      </div>
+    </div>
+  );
 }

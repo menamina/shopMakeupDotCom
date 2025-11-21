@@ -1,14 +1,28 @@
 import { useParams, useOutletContext } from "react-router";
 
+function clean(thisThing) {
+  const cleaned = thisThing
+    .trim()
+    .toLowerCase()
+    .replaceAll("_", "")
+    .replaceAll(" ", "");
+  return cleaned;
+}
+
 export default function BrandPage() {
   const { bname } = useParams();
   const { products, updateCart } = useOutletContext();
-  const specificBrandProducts = products.filter((obj) => obj.brand === bname);
+  const specificBrandProducts = products.filter(
+    (obj) => clean(obj.brand) === clean(bname)
+  );
+
+  console.log(specificBrandProducts);
+  console.log(`param name: ${bname}`);
 
   return (
-    <div className="Brands">
+    <div>
       {specificBrandProducts.map((item) => (
-        <div className="BrandHolder" key={item.brand}>
+        <div className="BrandHolder" key={item.id}>
           <img
             src={item.image_link}
             alt={`${item.brand} ${item.category}`}

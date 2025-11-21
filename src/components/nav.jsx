@@ -1,7 +1,7 @@
 import Cake from "../imgs/cake.png";
 import Login from "../imgs/profile.svg";
 import Bag from "../imgs/shoppingBag.svg";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import styles from "../css/navi.module.css";
 
 export default function Navi({
@@ -32,7 +32,7 @@ export default function Navi({
               src={Cake}
               alt="white cake with strawberrys on top - brand logo"
             ></img>
-            <p>Cakeface.</p>
+            <p className={styles.cakeFace}>Cakeface.</p>
           </div>
           <div className={styles.navLinks}>
             <p
@@ -41,21 +41,6 @@ export default function Navi({
             >
               Brands
             </p>
-            <div
-              className={`${styles.dropdownBrands} ${
-                isOpen === "brands" ? styles.show : styles.hidden
-              }`}
-            >
-              {byBrand.map((brand) => (
-                <Link
-                  to={`/Brand/${brand}`}
-                  className={styles.dropdownItem}
-                  key={brand}
-                >
-                  {brand}
-                </Link>
-              ))}
-            </div>
 
             <p
               className={styles.shopCategories}
@@ -63,42 +48,13 @@ export default function Navi({
             >
               Category
             </p>
-            <div
-              className={`${styles.dropdownCategory} ${
-                isOpen === "category" ? styles.show : styles.hidden
-              }`}
-            >
-              {byCategory.map((category) => (
-                <Link
-                  to={`/Category/${category}`}
-                  className={styles.category}
-                  key={category}
-                >
-                  {category}
-                </Link>
-              ))}
-            </div>
+
             <p
               className={styles.shopCategories}
               onClick={() => menuState("clean beauty")}
             >
               Clean Beauty
             </p>
-            <div
-              className={`${styles.dropdownClean} ${
-                isOpen === "clean beauty" ? styles.show : styles.hidden
-              }`}
-            >
-              {byCleanBeauty.map((tag) => (
-                <Link
-                  to={`/CleanBeautyTags/${tag}`}
-                  className={styles.tag}
-                  key={tag}
-                >
-                  {tag}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
         <div className={styles.rNavi}>
@@ -114,6 +70,38 @@ export default function Navi({
             </div>
           </Link>
         </div>
+      </div>
+
+      <div className={styles.displayNavClick}>
+        {isOpen === "clean beauty" && (
+          <div className={styles.allNavsClicked}>
+            {byCleanBeauty.map((tag) => (
+              <Link to={`/Tags/${tag}`} className={styles.tag} key={tag}>
+                {tag}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {isOpen === "brands" && (
+          <div className={styles.allNavsClicked}>
+            {byBrand.map((brand) => (
+              <Link to={`/Brand/${brand}`} className={styles.brand} key={brand}>
+                {brand}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {isOpen === "category" && (
+          <div className={styles.allNavsClicked}>
+            {byCategory.map((cat) => (
+              <Link to={`/Category/${cat}`} className={styles.cat} key={cat}>
+                {cat}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   );
