@@ -3,6 +3,7 @@ import Login from "../imgs/profile.svg";
 import Bag from "../imgs/shoppingBag.svg";
 import { Link } from "react-router-dom";
 import styles from "../css/navi.module.css";
+import HomePage from "./homepage";
 
 export default function Navi({
   byBrand,
@@ -27,11 +28,13 @@ export default function Navi({
       <div className={styles.navi}>
         <div className={styles.lNavi}>
           <div className={styles.logoNav}>
-            <img
-              className={styles.cake}
-              src={Cake}
-              alt="white cake with strawberrys on top - brand logo"
-            ></img>
+            <Link to="/">
+              <img
+                className={styles.cake}
+                src={Cake}
+                alt="white cake with strawberrys on top - brand logo"
+              ></img>
+            </Link>
             <p className={styles.cakeFace}>Cakeface.</p>
           </div>
           <div className={styles.navLinks}>
@@ -58,7 +61,9 @@ export default function Navi({
           </div>
         </div>
         <div className={styles.rNavi}>
-          <img className={styles.login} src={Login} alt="login icon"></img>
+          <Link to="login">
+            <img className={styles.login} src={Login} alt="login icon"></img>{" "}
+          </Link>
           <Link to={`/Cart`} className="cart">
             <div className="cartHolder">
               <div>{cartTotal === 0 ? "" : cartTotal}</div>
