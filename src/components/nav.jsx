@@ -34,7 +34,7 @@ export default function Navi({
             ></img>
             <p>Cakeface.</p>
           </div>
-          <div>
+          <div className={styles.navLinks}>
             <p
               className={styles.shopCategories}
               onClick={() => menuState("brands")}
@@ -101,7 +101,7 @@ export default function Navi({
             </div>
           </div>
         </div>
-        <div className="rNavi">
+        <div className={styles.rNavi}>
           <img className={styles.login} src={Login} alt="login icon"></img>
           <Link to={`/Cart`} className="cart">
             <div className="cartHolder">

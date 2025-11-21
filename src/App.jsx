@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import Navi from "./components/nav.jsx";
 import Footer from "./components/footer.jsx";
+import "./css/app.css";
 
 export function noDupes(list) {
   const noDuplicate = [...new Set(list)];
