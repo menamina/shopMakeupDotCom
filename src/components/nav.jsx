@@ -3,7 +3,6 @@ import Login from "../imgs/profile.svg";
 import Bag from "../imgs/shoppingBag.svg";
 import { Link } from "react-router-dom";
 import styles from "../css/navi.module.css";
-import HomePage from "./homepage";
 
 export default function Navi({
   byBrand,

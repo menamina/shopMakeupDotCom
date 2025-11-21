@@ -1,0 +1,34 @@
+.footerHolder {
+  display: flex;
+}
+
+.footerHolder {
+  align-items: center;
+}
+
+.footerHolder {
+  justify-content: space-evenly;
+  width: 100%;
+  height: 300px;
+  background-color: black;
+}
+
+/* imgs */
+
+.cake {
+  height: 70px;
+}
+
+.email,
+.phone {
+  height: 25px;
+  filter: invert(1);
+}
+
+p {
+  color: white;
+}
+
+p.footerTitle {
+  color: gray;
+}

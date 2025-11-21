@@ -1,43 +1,44 @@
 import Cake from "../imgs/cake.png";
 import Email from "../imgs/email.svg";
 import Phone from "../imgs/phone.svg";
+import styles from "../css/footer.module.css";
 
 export default function Footer() {
   return (
-    <div className="footerHolder">
-      <div className="foot1">
-        <img src={Cake} alt="cake brand logo"></img>
+    <div className={styles.footerHolder}>
+      <div className={styles.foot1}>
+        <img className={styles.cake} src={Cake} alt="cake brand logo"></img>
         <div>
-          <img src={Email} alt="email logo"></img>
+          <img className={styles.email} src={Email} alt="email logo"></img>
           <input
             type="email"
             aria-label="enter email here"
             placeholder="Enter your email"
           />
         </div>
-        <div className="emptyDiv"></div>
+        <div className={styles.emptyDiv}></div>
         <div>
-          <img src={Phone} alt="phone logo"></img>
+          <img className={styles.phone} src={Phone} alt="phone logo"></img>
           <input
             type="email"
             aria-label="enter phone number here"
             placeholder="Enter phone number"
           />
         </div>
-        <div className="emptyDiv"></div>
+        <div className={styles.emptyDiv}></div>
       </div>
-      <div className="foot2">
-        <p>COMPANY</p>
+      <div className={styles.foot2}>
+        <p className={styles.footerTitle}>COMPANY</p>
         <p>About</p>
         <p>Contact Us</p>
       </div>
-      <div className="foot3">
-        <p>HELP</p>
+      <div className={styles.foot3}>
+        <p className={styles.footerTitle}>HELP</p>
         <p>FAQ</p>
         <p>Return Policy</p>
       </div>
-      <div className="foot4">
-        <p>FOLLOW US</p>
+      <div className={styles.foot4}>
+        <p className={styles.footerTitle}>FOLLOW US</p>
         <div>
           <img></img>
           <p>Instagram</p>
