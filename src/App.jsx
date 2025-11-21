@@ -14,9 +14,20 @@ export function noNull(list) {
 }
 
 function App() {
-  const [products, updateProducts] = useState([]);
+  const brands = [
+    "glossier",
+    "e.l.f",
+    "maybelline",
+    "milani",
+    "l'oreal",
+    "revlon",
+    "pacifica",
+    "burts bees",
+    "smashbox",
+  ].sort((a, b) => a.localeCompare(b));
+  console.log(brands);
 
-  const [brands, updateBrands] = useState([]);
+  const [products, updateProducts] = useState([]);
   const [categories, updateCategories] = useState([]);
   const [cleanBeauty, updateCleanBeauty] = useState([]);
   const [apiErr, updateApiErr] = useState("");
@@ -36,6 +47,16 @@ function App() {
     setOpenMenu((prev) => name);
   }
 
+  function filterAllProductsByBrand(apireturn) {
+    const noNull = apireturn.filter((item) => item.brand !== null || "");
+    const cleanedNames = noNull.map((item) => ({
+      ...item,
+      brand: item.brand.toLowerCase().replaceAll("_", ""),
+    }));
+    const updated = cleanedNames.filter((item) => brands.includes(item.brand));
+    updateProducts(updated);
+  }
+
   useEffect(() => {
     async function makeupAPI() {
       try {
@@ -43,19 +64,20 @@ function App() {
           "http://makeup-api.herokuapp.com/api/v1/products.json"
         );
         const result = await apiLink.json();
-        const productList = result;
-        const brandList = noDupes(noNull(result.map((item) => item.brand)));
         const categoryList = result.map((item) => item.category);
         const cleanedCategoryList = categoryList
           .filter(Boolean)
           .map((x) => x.trim())
           .map((x) => x.toLowerCase())
           .map((x) => x.replaceAll("_", " "));
-        const finalCat = [...new Set(cleanedCategoryList)];
-        const tagList = noDupes(result.flatMap((item) => item.tag_list));
+        const finalCat = [
+          ...new Set(cleanedCategoryList.sort((a, b) => a.localeCompare(b))),
+        ];
+        const tagList = noDupes(result.flatMap((item) => item.tag_list)).sort(
+          (a, b) => a.localeCompare(b)
+        );
 
-        updateProducts(productList);
-        updateBrands(brandList);
+        filterAllProductsByBrand(result);
         updateCategories(finalCat);
         updateCleanBeauty(tagList);
       } catch (error) {
@@ -65,8 +87,8 @@ function App() {
     makeupAPI();
   }, []);
   useEffect(() => {
-    console.log("UPDATED:", products, brands, categories, cleanBeauty);
-  }, [products, brands, categories, cleanBeauty]);
+    console.log("UPDATED: products", products, categories, cleanBeauty);
+  }, [products, categories, cleanBeauty]);
 
   return (
     <div className="archContainer">

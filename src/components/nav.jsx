@@ -80,7 +80,8 @@ export default function Navi({
           <div className={`${styles.allNavsClicked} ${styles.show}`}>
             {byCleanBeauty.map((tag) => (
               <Link to={`/Tags/${tag}`} className={styles.tag} key={tag}>
-                {tag}
+                {tag.slice(0, 1).toUpperCase()}
+                {tag.slice(1)}
               </Link>
             ))}
           </div>
@@ -90,7 +91,8 @@ export default function Navi({
           <div className={styles.allNavsClicked}>
             {byBrand.map((brand) => (
               <Link to={`/Brand/${brand}`} className={styles.brand} key={brand}>
-                {brand}
+                {brand.slice(0, 1).toUpperCase()}
+                {brand.slice(1)}
               </Link>
             ))}
           </div>
@@ -100,7 +102,8 @@ export default function Navi({
           <div className={styles.allNavsClicked}>
             {byCategory.map((cat) => (
               <Link to={`/Category/${cat}`} className={styles.cat} key={cat}>
-                {cat}
+                {cat.slice(0, 1).toUpperCase()}
+                {cat.slice(1)}
               </Link>
             ))}
           </div>
