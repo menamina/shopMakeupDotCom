@@ -1,6 +1,7 @@
 import { useParams, useOutletContext } from "react-router";
 
 function clean(thisThing) {
+  if (!thisThing) return "";
   const cleaned = thisThing
     .trim()
     .toLowerCase()
@@ -15,9 +16,6 @@ export default function BrandPage() {
   const specificBrandProducts = products.filter(
     (obj) => clean(obj.brand) === clean(bname)
   );
-
-  console.log(specificBrandProducts);
-  console.log(`param name: ${bname}`);
 
   return (
     <div>

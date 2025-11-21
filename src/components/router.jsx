@@ -1,12 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
+import App from "../App";
 import HomePage from "./homepage";
 import BrandPage from "./brand";
-import CategoryPage from "./CategoryPage";
-import TagsPage from "./TagsPage";
-import Cart from "./Cart";
+import CategoryPage from "./category";
+import TagsPage from "./cleanBeautyTags";
+import Cart from "./cart";
 
 const router = createBrowserRouter([
   {
@@ -27,3 +27,5 @@ createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </StrictMode>
 );
+
+export default router;

@@ -1,2 +1,4 @@
 import { useOutletContext } from "react-router-dom";
-export default function CategoryPage() {}
+export default function CategoryPage() {
+  return <></>;
+}
