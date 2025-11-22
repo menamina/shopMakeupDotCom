@@ -53,36 +53,24 @@ function App() {
     }
   }
 
-  function updateCart(id, quan, price) {
-    let biggerThanPrev = 0;
-    let largerThanPrev = 0;
-    let isNull = false;
-
-    const inCart = cartItems.find((item) => item.id === id);
-    if (!inCart) {
-      isNull = true;
-    }
-
-    const inCartAlready = inCart.qty;
-
-    if (inCartAlready === newQuan) {
-      return 0;
-    } else if (inCartAlready > newQuan) {
-      return inCartAlready - newQuan;
-    } else if (inCartAlready < newQuan) {
-      return newQuan - inCartAlready;
-    }
-  }
-
+  function updateCart(id, qty, price) {
     updateCartItems((prev) => {
+      const exists = prev.find((item) => item.id === id);
 
-      if (isNull) {
-        const updated = [...prev, { item: id, qty: quan, price: price }];
-        updateCartTotal(updated.reduce((accu, next) => accu + next.qty, 0));
-        return updated;
-      } 
-    })
+      let updated;
 
+      if (exists) {
+        updated = prev.map((item) =>
+          item.id === id ? { ...item, qty: qty } : item
+        );
+      } else {
+        updated = [...prev, { id, qty: qty, price }];
+      }
+
+      updateCartTotal(updated.reduce((sum, next) => sum + next.qty, 0));
+
+      return updated;
+    });
   }
 
   function setMenuOpenClose(name) {
