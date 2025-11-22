@@ -1,5 +1,6 @@
 .imgTainer {
   display: flex;
+  margin-top: 30px;
 }
 .imgTainer {
   justify-content: center;

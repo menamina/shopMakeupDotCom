@@ -1,0 +1,47 @@
+.brandHolder,
+.archHolder,
+.imageHold {
+  display: flex;
+}
+
+.brandHolder,
+.archHolder {
+  flex-direction: column;
+}
+
+.archHolder {
+  height: 100%;
+  width: 100%;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 50px;
+}
+
+.archHolder > div {
+  height: 100%;
+  width: 100%;
+}
+
+.archHolder > div:first-child {
+  padding-bottom: 30px;
+}
+
+.momBrandHolder {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.brandHolder {
+  align-items: center;
+}
+
+.IMG {
+  height: 200px;
+  width: 200px;
+}
+
+.brandFont {
+  font-size: 2rem;
+}

@@ -16,7 +16,7 @@ export function noNull(list) {
 function App() {
   const brands = [
     "glossier",
-    "e.l.f",
+    "e.l.f.",
     "maybelline",
     "milani",
     "l'oreal",
