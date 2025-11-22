@@ -64,7 +64,7 @@ export default function Navi({
           </Link>
           <Link to={`/Cart`} className="cart">
             <div className="cartHolder">
-              <div>{cartTotal === 0 ? "" : cartTotal}</div>
+              <div>{cartTotal}</div>
               <img
                 className={styles.bag}
                 src={Bag}

@@ -7,8 +7,6 @@ export default function BrandPage() {
 
   const thisBrandsProducts = products.filter((item) => item.brand === bname);
 
-  console.log(thisBrandsProducts, products);
-
   return (
     <div className={styles.archHolder}>
       <div>
@@ -40,7 +38,9 @@ export default function BrandPage() {
               <p>Add</p>
               <input
                 type="number"
-                onChange={(e) => updateCart(item, e.target.value)}
+                onChange={(e) =>
+                  updateCart(item.id, Number(e.target.value), item.price)
+                }
                 className={styles.brandINPUT}
               ></input>
               <p>to bag</p>

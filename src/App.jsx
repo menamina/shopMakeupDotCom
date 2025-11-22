@@ -36,11 +36,53 @@ function App() {
   const [cartItems, updateCartItems] = useState([]);
   const [openMenu, setOpenMenu] = useState(null);
 
-  function updateCart(product, qty) {
-    updateCartItems((prev) => [...prev, { item: product, quant: qty }]);
-    // we want to loop through cart items take the quantity + to
-    const total = cartItems.reduce((accum, next) => accum + next.quant, 0);
-    updateCartTotal(total);
+  function check(newId, newQuan) {
+    const inCart = cartItems.find((item) => item.id === newId);
+    if (!inCart) {
+      return null;
+    }
+
+    const inCartAlready = inCart.qty;
+
+    if (inCartAlready === newQuan) {
+      return 0;
+    } else if (inCartAlready > newQuan) {
+      return inCartAlready - newQuan;
+    } else if (inCartAlready < newQuan) {
+      return newQuan - inCartAlready;
+    }
+  }
+
+  function updateCart(id, quan, price) {
+    let biggerThanPrev = 0;
+    let largerThanPrev = 0;
+    let isNull = false;
+
+    const inCart = cartItems.find((item) => item.id === id);
+    if (!inCart) {
+      isNull = true;
+    }
+
+    const inCartAlready = inCart.qty;
+
+    if (inCartAlready === newQuan) {
+      return 0;
+    } else if (inCartAlready > newQuan) {
+      return inCartAlready - newQuan;
+    } else if (inCartAlready < newQuan) {
+      return newQuan - inCartAlready;
+    }
+  }
+
+    updateCartItems((prev) => {
+
+      if (isNull) {
+        const updated = [...prev, { item: id, qty: quan, price: price }];
+        updateCartTotal(updated.reduce((accu, next) => accu + next.qty, 0));
+        return updated;
+      } 
+    })
+
   }
 
   function setMenuOpenClose(name) {
@@ -106,6 +148,7 @@ function App() {
           brands,
           categories,
           cleanBeauty,
+          cartItems,
           updateCart,
           setOpenMenu,
         }}
