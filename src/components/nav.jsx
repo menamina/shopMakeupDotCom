@@ -79,7 +79,12 @@ export default function Navi({
         {isOpen === "clean beauty" ? (
           <div className={`${styles.allNavsClicked} ${styles.show}`}>
             {byCleanBeauty.map((tag) => (
-              <Link to={`/Tags/${tag}`} className={styles.tag} key={tag}>
+              <Link
+                to={`/Tags/${tag}`}
+                className={styles.tag}
+                key={tag}
+                onClickCapture={() => menuState(null)}
+              >
                 {tag.slice(0, 1).toUpperCase()}
                 {tag.slice(1)}
               </Link>
@@ -90,7 +95,12 @@ export default function Navi({
         {isOpen === "brands" ? (
           <div className={styles.allNavsClicked}>
             {byBrand.map((brand) => (
-              <Link to={`/Brand/${brand}`} className={styles.brand} key={brand}>
+              <Link
+                to={`/Brand/${brand}`}
+                className={styles.brand}
+                key={brand}
+                onClickCapture={() => menuState(null)}
+              >
                 {brand.slice(0, 1).toUpperCase()}
                 {brand.slice(1)}
               </Link>
@@ -101,7 +111,12 @@ export default function Navi({
         {isOpen === "category" ? (
           <div className={styles.allNavsClicked}>
             {byCategory.map((cat) => (
-              <Link to={`/Category/${cat}`} className={styles.cat} key={cat}>
+              <Link
+                to={`/Category/${cat}`}
+                className={styles.cat}
+                key={cat}
+                onClickCapture={() => menuState(null)}
+              >
                 {cat.slice(0, 1).toUpperCase()}
                 {cat.slice(1)}
               </Link>

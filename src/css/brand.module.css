@@ -1,6 +1,7 @@
 .brandHolder,
 .archHolder,
-.imageHold {
+.imageHold,
+.inputDiv {
   display: flex;
 }
 
@@ -44,4 +45,8 @@
 
 .brandFont {
   font-size: 2rem;
+}
+
+input .brandINPUT {
+  color: black;
 }

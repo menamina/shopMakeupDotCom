@@ -76,13 +76,13 @@ p.footerTitle {
   padding-bottom: 30px;
 }
 
-input {
+.input {
   background: transparent;
   border: none;
   outline: none;
   color: white;
 }
 
-input::placeholder {
+.input::placeholder {
   color: white;
 }

@@ -18,6 +18,7 @@ export default function Footer() {
             type="email"
             aria-label="enter email here"
             placeholder="Enter your email"
+            className={styles.input}
           />
         </div>
         <div className={styles.emptyDiv}></div>
@@ -27,6 +28,7 @@ export default function Footer() {
             type="email"
             aria-label="enter phone number here"
             placeholder="Enter phone number"
+            className={styles.input}
           />
         </div>
         <div className={styles.emptyDiv}></div>

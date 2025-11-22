@@ -12,7 +12,9 @@ export default function BrandPage() {
   return (
     <div className={styles.archHolder}>
       <div>
-        <p className={styles.brandFont}>{bname}</p>
+        <p className={styles.brandFont}>{`${bname
+          .slice(0, 1)
+          .toUpperCase()}${bname.slice(1)}`}</p>
       </div>
       <div className={styles.momBrandHolder}>
         {thisBrandsProducts.map((item) => (
@@ -24,19 +26,22 @@ export default function BrandPage() {
                 alt={`${item.brand} ${item.category}`}
               ></img>
             </div>
-            <p>{item.brand}</p>
-            <p>{item.name}</p>
+            <p>{`${bname.slice(0, 1).toUpperCase()}${bname.slice(1)}`}</p>
+            <p>{`${item.name.slice(0, 1).toUpperCase()}${item.name.slice(
+              1
+            )}`}</p>
             {item.product_colors.length === 1 ? null : (
               <p className={styles.colorLength}>
                 {item.product_colors.length} colors
               </p>
             )}
             <p>${item.price}</p>
-            <div>
+            <div className={styles.inputDiv}>
               <p>Add</p>
               <input
                 type="number"
                 onChange={(e) => updateCart(item, e.target.value)}
+                className={styles.brandINPUT}
               ></input>
               <p>to bag</p>
             </div>
