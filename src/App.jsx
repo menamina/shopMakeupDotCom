@@ -100,9 +100,9 @@ function App() {
           .map((x) => x.trim())
           .map((x) => x.toLowerCase())
           .map((x) => x.replaceAll("_", " "));
-        const finalCat = [
-          ...new Set(cleanedCategoryList.sort((a, b) => a.localeCompare(b))),
-        ];
+        const finalCat = [...new Set(cleanedCategoryList)].sort((a, b) =>
+          a.localeCompare(b)
+        );
         const tagList = noDupes(result.flatMap((item) => item.tag_list)).sort(
           (a, b) => a.localeCompare(b)
         );

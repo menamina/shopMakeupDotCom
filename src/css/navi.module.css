@@ -13,7 +13,8 @@
 .rNavi,
 .logoNav,
 .navLinks,
-.allNavsClicked {
+.allNavsClicked,
+.displayNavClick {
   display: flex;
 }
 
@@ -41,13 +42,13 @@
 .naviHolder {
   justify-content: space-between;
   padding-top: 20px;
-  gap: 30px;
   height: 150px;
 }
 
 .preShop {
   font-size: 0.85rem;
   width: 100%;
+  padding-bottom: 20px;
 }
 
 .TrackGift {
@@ -57,8 +58,11 @@
 .navi {
   width: 100%;
   height: 7rem;
+  background-color: white;
   border-top: 1px solid rgb(210, 210, 210);
   border-bottom: 1px solid rgb(210, 210, 210);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .cakeFace {
@@ -108,4 +112,13 @@
   position: sticky;
   top: 0;
   background-color: white;
+}
+.displayNavClick {
+  background-color: rgb(255, 255, 255);
+  align-self: start;
+  width: 200px;
+}
+
+a {
+  text-decoration: none;
 }
