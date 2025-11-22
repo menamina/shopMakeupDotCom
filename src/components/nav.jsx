@@ -75,7 +75,11 @@ export default function Navi({
         </div>
       </div>
 
-      <div className={styles.displayNavClick}>
+      <div
+        className={
+          isOpen ? styles.displayNavClick : `${styles.displayNavClick.hidden}`
+        }
+      >
         {isOpen === "clean beauty" ? (
           <div className={`${styles.allNavsClicked} ${styles.show}`}>
             {byCleanBeauty.map((tag) => (

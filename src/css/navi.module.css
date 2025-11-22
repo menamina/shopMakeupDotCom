@@ -119,6 +119,10 @@
   top: 100%;
 }
 
+.displayNavClick.hidden {
+  display: none;
+}
+
 a {
   text-decoration: none;
 }
