@@ -43,6 +43,7 @@
   justify-content: space-between;
   padding-top: 20px;
   height: 150px;
+  position: relative;
 }
 
 .preShop {
@@ -67,10 +68,6 @@
 
 .cakeFace {
   font-style: italic;
-}
-
-.hidden {
-  display: none;
 }
 
 .preShop {
@@ -117,6 +114,9 @@
   background-color: rgb(255, 255, 255);
   align-self: start;
   width: 200px;
+  height: 100vh;
+  position: absolute;
+  top: 100%;
 }
 
 a {

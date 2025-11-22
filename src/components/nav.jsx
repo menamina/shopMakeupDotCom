@@ -93,7 +93,7 @@ export default function Navi({
         ) : null}
 
         {isOpen === "brands" ? (
-          <div className={styles.allNavsClicked}>
+          <div className={`${styles.allNavsClicked} ${styles.show}`}>
             {byBrand.map((brand) => (
               <Link
                 to={`/Brand/${brand}`}
