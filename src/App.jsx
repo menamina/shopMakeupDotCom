@@ -36,23 +36,6 @@ function App() {
   const [cartItems, updateCartItems] = useState([]);
   const [openMenu, setOpenMenu] = useState(null);
 
-  function check(newId, newQuan) {
-    const inCart = cartItems.find((item) => item.id === newId);
-    if (!inCart) {
-      return null;
-    }
-
-    const inCartAlready = inCart.qty;
-
-    if (inCartAlready === newQuan) {
-      return 0;
-    } else if (inCartAlready > newQuan) {
-      return inCartAlready - newQuan;
-    } else if (inCartAlready < newQuan) {
-      return newQuan - inCartAlready;
-    }
-  }
-
   function updateCart(id, qty, price) {
     updateCartItems((prev) => {
       const exists = prev.find((item) => item.id === id);

@@ -113,14 +113,23 @@
 .displayNavClick {
   background-color: rgb(255, 255, 255);
   align-self: start;
-  width: 200px;
+  width: 220px;
   height: 100vh;
   position: absolute;
   top: 100%;
+  transform: translateY(10.5px);
+  justify-content: center;
+  overflow: auto;
 }
 
 .displayNavClick.hidden {
   display: none;
+}
+
+.allNavsClicked {
+  gap: 15px;
+  font-size: 1.5rem;
+  padding-top: 20px;
 }
 
 a {

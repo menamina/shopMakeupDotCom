@@ -77,7 +77,9 @@ export default function Navi({
 
       <div
         className={
-          isOpen ? styles.displayNavClick : `${styles.displayNavClick.hidden}`
+          isOpen !== null
+            ? styles.displayNavClick
+            : `${styles.displayNavClick.hidden}`
         }
       >
         {isOpen === "clean beauty" ? (
