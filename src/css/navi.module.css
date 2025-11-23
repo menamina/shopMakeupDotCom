@@ -135,3 +135,13 @@
 a {
   text-decoration: none;
 }
+
+.cartHolder {
+  position: relative;
+}
+
+.cartTotal {
+  position: absolute;
+  transform: translateY(11px) translateX(12px);
+  font-size: 0.8rem;
+}

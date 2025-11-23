@@ -3,18 +3,18 @@ import styles from "../css/brand.module.css";
 
 export default function TagsPage() {
   const { tname } = useParams();
-  const { products, updateCart } = useOutletContext();
+  const { products, updateCart, menuState } = useOutletContext();
 
-  const thisCatProducts = products.filter((item) => item.category === tname);
+  const thisCatProducts = products.filter((item) => item.tag_list === tname);
 
   return (
-    <div className={styles.archHolder}>
+    <div className={styles.archHolder} onClick={() => menuState(null)}>
       <div>
-        <p className={styles.catFont}>{`${tname
+        <p className={styles.tagFont}>{`${tname
           .slice(0, 1)
           .toUpperCase()}${tname.slice(1)}`}</p>
       </div>
-      <div className={styles.momCatHolder}>
+      <div className={styles.momTagHolder}>
         {thisCatProducts.map((item) => (
           <div className={styles.catholder} key={item.id}>
             <div className={styles.imageHold}>
@@ -39,9 +39,9 @@ export default function TagsPage() {
               <input
                 type="number"
                 onChange={(e) =>
-                  updateCart(item.id, Number(e.target.value), item.price)
+                  updateCart(item.id, Number(e.target.value), item)
                 }
-                className={styles.catINPUT}
+                className={styles.tagINPUT}
               ></input>
               <p>to bag</p>
             </div>

@@ -36,7 +36,7 @@ function App() {
   const [cartItems, updateCartItems] = useState([]);
   const [openMenu, setOpenMenu] = useState(null);
 
-  function updateCart(id, qty, price) {
+  function updateCart(id, qty, fullItem) {
     updateCartItems((prev) => {
       const exists = prev.find((item) => item.id === id);
 
@@ -47,10 +47,10 @@ function App() {
           item.id === id ? { ...item, qty: qty } : item
         );
       } else {
-        updated = [...prev, { id, qty: qty, price }];
+        updated = [...prev, { id, qty: qty, fullItem }];
       }
 
-      updateCartTotal(updated.reduce((sum, next) => sum + next.qty, 0));
+      updateCartTotal(updated.reduce((sum, next) => sum.qty + next.qty));
 
       return updated;
     });
@@ -112,6 +112,7 @@ function App() {
         menuState={setMenuOpenClose}
         isOpen={openMenu}
         cartTotal={cartTotal}
+        updateCartItems={updateCartItems}
       />
       <Outlet
         context={{
@@ -120,8 +121,10 @@ function App() {
           categories,
           cleanBeauty,
           cartItems,
+          cartTotal,
           updateCart,
           setOpenMenu,
+          updateCartItems,
         }}
       />
       <Footer />

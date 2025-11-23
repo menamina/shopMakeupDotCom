@@ -39,7 +39,7 @@ export default function CategoryPage() {
               <input
                 type="number"
                 onChange={(e) =>
-                  updateCart(item.id, Number(e.target.value), item.price)
+                  updateCart(item.id, Number(e.target.value), item)
                 }
                 className={styles.catINPUT}
               ></input>

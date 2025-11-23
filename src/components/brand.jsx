@@ -3,9 +3,19 @@ import styles from "../css/brand.module.css";
 
 export default function BrandPage() {
   const { bname } = useParams();
-  const { products, updateCart } = useOutletContext();
+  const { products, updateCart, cartItems } = useOutletContext();
 
   const thisBrandsProducts = products.filter((item) => item.brand === bname);
+
+  function thisItemsQnty(item) {
+    const thisItemsId = item.id;
+    const found = cartItems.find((item) => item.id === thisItemsId);
+    if (found) {
+      return found.qty;
+    } else {
+      return 0;
+    }
+  }
 
   return (
     <div className={styles.archHolder}>
@@ -39,9 +49,10 @@ export default function BrandPage() {
               <input
                 type="number"
                 onChange={(e) =>
-                  updateCart(item.id, Number(e.target.value), item.price)
+                  updateCart(item.id, Number(e.target.value), item)
                 }
                 className={styles.brandINPUT}
+                placeholder={thisItemsQnty(item)}
               ></input>
               <p>to bag</p>
             </div>
