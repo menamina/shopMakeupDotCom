@@ -37,17 +37,23 @@ function App() {
   const [openMenu, setOpenMenu] = useState(null);
 
   function updateCart(id, qty, fullItem) {
-    updateCartItems((prev) => {
-      const exists = prev.find((item) => item.id === id);
+    const numQty = qty;
+    if (Number.isNaN(numQty)) return;
 
+    updateCartItems((prev) => {
       let updated;
 
-      if (exists) {
-        updated = prev.map((item) =>
-          item.id === id ? { ...item, qty: Number(qty) } : item
-        );
+      if (numQty <= 0) {
+        updated = prev.filter((item) => item.id !== id);
       } else {
-        updated = [...prev, { fullItem, id, qty: Number(qty) }];
+        const exists = prev.find((item) => item.id === id);
+        if (exists) {
+          updated = prev.map((item) =>
+            item.id === id ? { ...item, qty: numQty } : item
+          );
+        } else {
+          updated = [...prev, { fullItem, id, qty: numQty }];
+        }
       }
 
       updateCartTotal(updated.reduce((sum, next) => sum + next.qty, 0));

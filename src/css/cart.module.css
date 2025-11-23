@@ -1,0 +1,61 @@
+.cartTainer,
+.cartTainer > div,
+.left > div:first-child,
+.cartItems,
+.cartItems > div:first-child {
+  display: flex;
+}
+
+.cartTainer > div,
+.cartItems {
+  flex-direction: column;
+}
+
+.left > div:first-child {
+  align-items: center;
+}
+
+.cartTainer {
+  justify-content: space-between;
+}
+
+.cartTainer {
+  width: 100%;
+  padding-left: 160px;
+  padding-right: 160px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  gap: 140px;
+}
+
+.left {
+  width: 60%;
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 1%;
+}
+
+.right {
+  width: 40%;
+}
+
+.truck {
+  width: 100px;
+}
+
+.left > div:first-child {
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.ship {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.cartIMGS {
+  width: 70px;
+  height: 100%;
+}
+
+.cartItems {
+  padding: 20px;
+}

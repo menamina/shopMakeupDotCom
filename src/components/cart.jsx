@@ -1,5 +1,7 @@
 import { useParams, useOutletContext } from "react-router";
 import styles from "../css/cart.module.css";
+import truck from "../imgs/truck.jpg";
+
 export default function Cart() {
   const { cartTotal, cartItems, updateCart, updateCartItems, updateCartTotal } =
     useOutletContext();
@@ -19,13 +21,28 @@ export default function Cart() {
       ) : (
         <div className={styles.cartTainer}>
           <div className={styles.left}>
-            <div></div>
-            {cartItems.map((item) => (
+            <div>
+              <img
+                src={truck}
+                alt="shipping truck"
+                className={styles.truck}
+              ></img>
               <div>
+                <p className={styles.ship}>Shipping</p>
+                {cartTotal === 1 ? (
+                  <p>1 item to you</p>
+                ) : (
+                  <p>{cartTotal} items to you</p>
+                )}
+              </div>
+            </div>
+            {cartItems.map((item) => (
+              <div className={styles.cartItems}>
                 <div>
                   <img
                     src={item.fullItem.image_link}
                     alt={`${item.fullItem.brand} ${item.fullItem.name}`}
+                    className={styles.cartIMGS}
                   ></img>
                   <div>
                     <p>{item.fullItem.brand}</p>
@@ -74,3 +91,8 @@ export default function Cart() {
     </div>
   );
 }
+
+// <div className={styles.Truck}>
+//             <p>Bag</p>
+//             {cartTotal === 1 ? <p>1 item</p> : <p>{cartTotal} items</p>}
+//           </div>
