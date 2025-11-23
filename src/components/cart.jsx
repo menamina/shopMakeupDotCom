@@ -1,13 +1,15 @@
 import { useParams, useOutletContext } from "react-router";
 import styles from "../css/cart.module.css";
 export default function Cart() {
-  const { cartTotal, cartItems, updateCart, updateCartItems } =
+  const { cartTotal, cartItems, updateCart, updateCartItems, updateCartTotal } =
     useOutletContext();
+
   function deleteItem(thisItem) {
     const updatedCartWithDelete = cartItems.filter(
       (item) => item.id !== thisItem.id
     );
     updateCartItems(updatedCartWithDelete);
+    updateCartTotal((prev) => prev - thisItem.qty);
   }
 
   return (

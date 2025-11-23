@@ -13,7 +13,7 @@ export default function BrandPage() {
     if (found) {
       return found.qty;
     } else {
-      return 0;
+      return "";
     }
   }
 
@@ -52,7 +52,7 @@ export default function BrandPage() {
                   updateCart(item.id, Number(e.target.value), item)
                 }
                 className={styles.brandINPUT}
-                placeholder={thisItemsQnty(item)}
+                value={thisItemsQnty(item)}
               ></input>
               <p>to bag</p>
             </div>

@@ -44,13 +44,13 @@ function App() {
 
       if (exists) {
         updated = prev.map((item) =>
-          item.id === id ? { ...item, qty: qty } : item
+          item.id === id ? { ...item, qty: Number(qty) } : item
         );
       } else {
-        updated = [...prev, { id, qty: qty, fullItem }];
+        updated = [...prev, { fullItem, id, qty: Number(qty) }];
       }
 
-      updateCartTotal(updated.reduce((sum, next) => sum.qty + next.qty));
+      updateCartTotal(updated.reduce((sum, next) => sum + next.qty, 0));
 
       return updated;
     });
@@ -123,8 +123,9 @@ function App() {
           cartItems,
           cartTotal,
           updateCart,
-          setOpenMenu,
           updateCartItems,
+          updateCartTotal,
+          setOpenMenu,
         }}
       />
       <Footer />
