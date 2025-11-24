@@ -9,10 +9,6 @@ export function noDupes(list) {
   return noDuplicate;
 }
 
-export function noNull(list) {
-  return list.filter((item) => item !== null && item !== "");
-}
-
 function App() {
   const brands = [
     "glossier",
@@ -31,12 +27,38 @@ function App() {
   const [cleanBeauty, updateCleanBeauty] = useState([]);
   const [apiErr, updateApiErr] = useState("");
 
-  const [cartTotal, updateCartTotal] = useState(0);
-  const [cartItems, updateCartItems] = useState([]);
-  const [openMenu, setOpenMenu] = useState(null);
+  const [cartItems, updateCartItems] = useState(() => {
+    if (typeof localStorage === "undefined") return [];
 
-  function updateCart(id, qty, fullItem) {
-    const numQty = qty;
+    try {
+      const savedCart = localStorage.getItem("cartItems");
+      if (!savedCart) return [];
+
+      const parsedCart = JSON.parse(savedCart);
+
+      if (!Array.isArray(parsedCart)) return [];
+
+      const sanitizedCart = parsedCart
+        .filter(
+          (item) =>
+            item &&
+            typeof item.id !== "undefined" &&
+            Number(item.qty) > 0 &&
+            !Number.isNaN(Number(item.qty))
+        )
+        .map((item) => ({ id: item.id, qty: Number(item.qty) }));
+
+      return sanitizedCart;
+    } catch (error) {
+      console.error("Failed to restore cart from storage", error);
+      return [];
+    }
+  });
+  const [openMenu, setOpenMenu] = useState(null);
+  const cartTotal = cartItems.reduce((sum, next) => sum + next.qty, 0);
+
+  function updateCart(id, qty) {
+    const numQty = Number(qty);
     if (Number.isNaN(numQty)) return;
 
     updateCartItems((prev) => {
@@ -48,25 +70,25 @@ function App() {
         const exists = prev.find((item) => item.id === id);
         if (exists) {
           updated = prev.map((item) =>
-            item.id === id ? { ...item, qty: numQty } : item
+            item.id === id ? { id, qty: numQty } : item
           );
         } else {
-          updated = [...prev, { fullItem, id, qty: numQty }];
+          updated = [...prev, { id, qty: numQty }];
         }
       }
-
-      updateCartTotal(updated.reduce((sum, next) => sum + next.qty, 0));
 
       return updated;
     });
   }
 
   function setMenuOpenClose(name) {
-    setOpenMenu((prev) => name);
+    setOpenMenu(name);
   }
 
   function filterAllProductsByBrand(apireturn) {
-    const noNull = apireturn.filter((item) => item.brand !== null || "");
+    const noNull = apireturn.filter(
+      (item) => item.brand !== null && item.brand !== ""
+    );
     const cleanedNames = noNull.map((item) => ({
       ...item,
       brand: item.brand.toLowerCase().replaceAll("_", ""),
@@ -99,11 +121,18 @@ function App() {
         updateCategories(finalCat);
         updateCleanBeauty(tagList);
       } catch (error) {
+        console.log(error);
         updateApiErr(error);
       }
     }
     makeupAPI();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  console.log(apiErr);
 
   return (
     <div className="archContainer">
@@ -126,7 +155,6 @@ function App() {
           cartTotal,
           updateCart,
           updateCartItems,
-          updateCartTotal,
           setOpenMenu,
         }}
       />

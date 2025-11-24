@@ -142,6 +142,8 @@ a {
 
 .cartTotal {
   position: absolute;
-  transform: translateY(11px) translateX(12px);
+  transform: translateY(2px) translateX(14px);
   font-size: 0.8rem;
+  justify-self: center;
+  align-self: center;
 }

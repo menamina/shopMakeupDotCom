@@ -3,15 +3,32 @@ import styles from "../css/cart.module.css";
 import truck from "../imgs/truck.jpg";
 
 export default function Cart() {
-  const { cartTotal, cartItems, updateCart, updateCartItems, updateCartTotal } =
-    useOutletContext();
+  const {
+    cartTotal,
+    cartItems,
+    updateCart,
+    updateCartItems,
+    products,
+  } = useOutletContext();
 
   function deleteItem(thisItem) {
     const updatedCartWithDelete = cartItems.filter(
       (item) => item.id !== thisItem.id
     );
     updateCartItems(updatedCartWithDelete);
-    updateCartTotal((prev) => prev - thisItem.qty);
+  }
+
+  function cartMoneyTotal() {
+    let total = 0;
+    cartItems.forEach((itemInCart) => {
+      const actualProductPrice = products.find(
+        (item) => item.id === itemInCart.id
+      );
+      const addToTotal = Number(actualProductPrice.price) * itemInCart.qty;
+      total += addToTotal;
+    });
+
+    return total;
   }
 
   return (
@@ -36,31 +53,34 @@ export default function Cart() {
                 )}
               </div>
             </div>
-            {cartItems.map((item) => (
-              <div className={styles.cartItems}>
-                <div>
-                  <img
-                    src={item.fullItem.image_link}
-                    alt={`${item.fullItem.brand} ${item.fullItem.name}`}
-                    className={styles.cartIMGS}
-                  ></img>
+            {cartItems.map((cartItem) => {
+              const product = products.find((item) => item.id === cartItem.id);
+              return (
+                <div className={styles.cartItems}>
                   <div>
-                    <p>{item.fullItem.brand}</p>
-                    <p>{item.fullItem.name}</p>
+                    <img
+                      src={product.image_link}
+                      alt={`${product.brand} ${product.name}`}
+                      className={styles.cartIMGS}
+                    ></img>
+                    <div>
+                      <p>{product.brand}</p>
+                      <p>{product.name}</p>
+                    </div>
+                  </div>
+                  <div className={styles.addDelete}>
+                    <input
+                      type="number"
+                      onChange={(e) =>
+                        updateCart(product.id, Number(e.target.value))
+                      }
+                      defaultValue={cartItem.qty}
+                    ></input>
+                    <p onClick={() => deleteItem(cartItem)}>Remove</p>
                   </div>
                 </div>
-                <div className={styles.addDelete}>
-                  <input
-                    type="number"
-                    onChange={(e) =>
-                      updateCart(item.id, Number(e.target.value), item)
-                    }
-                    defaultValue={item.qty}
-                  ></input>
-                  <p onClick={() => deleteItem(item)}>Remove</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className={styles.right}>
             <div className={styles.orderSum}>
@@ -79,7 +99,7 @@ export default function Cart() {
               </div>
               <div className={styles.orderSumChildren}>
                 <p>Estimated Total</p>
-                <p>${cartTotal}</p>
+                {/* <p>${}</p> */}
               </div>
             </div>
             <div className={styles.checkOut}>
@@ -91,8 +111,3 @@ export default function Cart() {
     </div>
   );
 }
-
-// <div className={styles.Truck}>
-//             <p>Bag</p>
-//             {cartTotal === 1 ? <p>1 item</p> : <p>{cartTotal} items</p>}
-//           </div>

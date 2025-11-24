@@ -49,9 +49,7 @@ export default function TagsPage() {
               <p>Add</p>
               <input
                 type="number"
-                onChange={(e) =>
-                  updateCart(item.id, Number(e.target.value), item)
-                }
+                onChange={(e) => updateCart(item.id, Number(e.target.value))}
                 className={styles.tagINPUT}
                 defaultValue={thisItemsQnty(item)}
               ></input>

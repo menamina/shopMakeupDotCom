@@ -48,9 +48,7 @@ export default function BrandPage() {
               <p>Add</p>
               <input
                 type="number"
-                onChange={(e) =>
-                  updateCart(item.id, Number(e.target.value), item)
-                }
+                onChange={(e) => updateCart(item.id, Number(e.target.value))}
                 className={styles.brandINPUT}
                 defaultValue={thisItemsQnty(item)}
               ></input>
