@@ -49,13 +49,13 @@ export default function Cart() {
                     <p>{item.fullItem.name}</p>
                   </div>
                 </div>
-                <div>
+                <div className={styles.addDelete}>
                   <input
                     type="number"
                     onChange={(e) =>
                       updateCart(item.id, Number(e.target.value), item)
                     }
-                    placeholder={item.qty}
+                    defaultValue={item.qty}
                   ></input>
                   <p onClick={() => deleteItem(item)}>Remove</p>
                 </div>
@@ -64,9 +64,9 @@ export default function Cart() {
           </div>
           <div className={styles.right}>
             <div className={styles.orderSum}>
-              <p>Order Summary</p>
+              <p className={styles.sumTitle}>Order Summary</p>
               <div className={styles.orderSumChildren}>
-                <p>Subtotal</p>
+                <p>Subtotal ({cartTotal} items)</p>
                 <p></p>
               </div>
               <div className={styles.orderSumChildren}>
@@ -79,11 +79,11 @@ export default function Cart() {
               </div>
               <div className={styles.orderSumChildren}>
                 <p>Estimated Total</p>
-                <p>{cartTotal}</p>
+                <p>${cartTotal}</p>
               </div>
             </div>
             <div className={styles.checkOut}>
-              <button>Checkout</button>
+              <button className={styles.btn}>Checkout</button>
             </div>
           </div>
         </div>

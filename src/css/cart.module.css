@@ -2,12 +2,16 @@
 .cartTainer > div,
 .left > div:first-child,
 .cartItems,
-.cartItems > div:first-child {
+.cartItems > div,
+.orderSum,
+.orderSumChildren {
   display: flex;
 }
 
 .cartTainer > div,
-.cartItems {
+.cartContainer > div:last-child,
+.cartItems,
+.orderSum {
   flex-direction: column;
 }
 
@@ -15,7 +19,8 @@
   align-items: center;
 }
 
-.cartTainer {
+.cartTainer,
+.orderSumChildren {
   justify-content: space-between;
 }
 
@@ -44,11 +49,12 @@
 
 .left > div:first-child {
   border-bottom: 1px solid rgb(210, 210, 210);
+  padding: 20px;
+  gap: 20px;
 }
 
 .ship {
   font-weight: 500;
-  font-size: 1.5rem;
 }
 
 .cartIMGS {
@@ -58,4 +64,44 @@
 
 .cartItems {
   padding: 20px;
+  gap: 30px;
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.cartItems > div:first-child {
+  gap: 20px;
+}
+
+.addDelete {
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.orderSum {
+  gap: 7px;
+  padding-bottom: 20px;
+}
+
+.sumTitle {
+  padding-bottom: 20px;
+}
+
+.ship,
+.sumTitle,
+.orderSumChildren:last-of-type {
+  font-size: 1.5rem;
+}
+
+/* .checkOut {
+  padding-top: 20px;
+} */
+
+.btn {
+  height: 50px;
+  width: 100%;
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgb(124, 124, 124);
+  border-style: none;
+  border-radius: 20px;
 }

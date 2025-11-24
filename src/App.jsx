@@ -25,7 +25,6 @@ function App() {
     "burts bees",
     "smashbox",
   ].sort((a, b) => a.localeCompare(b));
-  console.log(brands);
 
   const [products, updateProducts] = useState([]);
   const [categories, updateCategories] = useState([]);
@@ -105,9 +104,6 @@ function App() {
     }
     makeupAPI();
   }, []);
-  useEffect(() => {
-    console.log("UPDATED: products", products, categories, cleanBeauty);
-  }, [products, categories, cleanBeauty]);
 
   return (
     <div className="archContainer">

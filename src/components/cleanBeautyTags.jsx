@@ -3,10 +3,21 @@ import styles from "../css/brand.module.css";
 
 export default function TagsPage() {
   const { tname } = useParams();
-  const { products, updateCart, menuState } = useOutletContext();
+  const { products, updateCart, menuState, cartItems } = useOutletContext();
 
-  const thisCatProducts = products.filter((item) => item.tag_list === tname);
+  const thisTagProducts = products.filter((item) =>
+    item.tag_list.includes(tname)
+  );
 
+  function thisItemsQnty(item) {
+    const thisItemsId = item.id;
+    const found = cartItems.find((item) => item.id === thisItemsId);
+    if (found) {
+      return found.qty;
+    } else {
+      return 0;
+    }
+  }
   return (
     <div className={styles.archHolder} onClick={() => menuState(null)}>
       <div>
@@ -15,7 +26,7 @@ export default function TagsPage() {
           .toUpperCase()}${tname.slice(1)}`}</p>
       </div>
       <div className={styles.momTagHolder}>
-        {thisCatProducts.map((item) => (
+        {thisTagProducts.map((item) => (
           <div className={styles.catholder} key={item.id}>
             <div className={styles.imageHold}>
               <img
@@ -42,6 +53,7 @@ export default function TagsPage() {
                   updateCart(item.id, Number(e.target.value), item)
                 }
                 className={styles.tagINPUT}
+                defaultValue={thisItemsQnty(item)}
               ></input>
               <p>to bag</p>
             </div>

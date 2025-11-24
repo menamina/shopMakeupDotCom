@@ -3,9 +3,19 @@ import styles from "../css/brand.module.css";
 
 export default function CategoryPage() {
   const { cname } = useParams();
-  const { products, updateCart } = useOutletContext();
+  const { products, updateCart, cartItems } = useOutletContext();
 
   const thisCatProducts = products.filter((item) => item.category === cname);
+
+  function thisItemsQnty(item) {
+    const thisItemsId = item.id;
+    const found = cartItems.find((item) => item.id === thisItemsId);
+    if (found) {
+      return found.qty;
+    } else {
+      return 0;
+    }
+  }
 
   return (
     <div className={styles.archHolder}>
@@ -42,6 +52,7 @@ export default function CategoryPage() {
                   updateCart(item.id, Number(e.target.value), item)
                 }
                 className={styles.catINPUT}
+                defaultValue={thisItemsQnty(item)}
               ></input>
               <p>to bag</p>
             </div>
