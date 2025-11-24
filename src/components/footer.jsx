@@ -7,9 +7,9 @@ import X from "../imgs/x.svg";
 import Youtube from "../imgs/youtube.svg";
 import styles from "../css/footer.module.css";
 
-export default function Footer() {
+export default function Footer({ menuState }) {
   return (
-    <div className={styles.footerHolder}>
+    <div className={styles.footerHolder} onClick={() => menuState(null)}>
       <div className={styles.foot1}>
         <img className={styles.cake} src={Cake} alt="cake brand logo"></img>
         <div className={styles.values}>

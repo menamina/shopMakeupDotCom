@@ -156,9 +156,10 @@ function App() {
           updateCart,
           updateCartItems,
           setOpenMenu,
+          setMenuOpenClose,
         }}
       />
-      <Footer />
+      <Footer menuState={setOpenMenu} />
     </div>
   );
 }

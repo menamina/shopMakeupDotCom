@@ -1,11 +1,11 @@
-.brandHolder,
+.catholder,
 .archHolder,
 .imageHold,
 .inputDiv {
   display: flex;
 }
 
-.brandHolder,
+.catholder,
 .archHolder {
   flex-direction: column;
 }
@@ -13,7 +13,6 @@
 .archHolder {
   min-height: 500px;
   max-height: 100%;
-  width: 100%;
   padding-left: 10rem;
   padding-right: 10rem;
   padding-top: 50px;
@@ -29,7 +28,7 @@
   padding-bottom: 30px;
 }
 
-.momBrandHolder {
+.momCatHolder {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
@@ -37,7 +36,7 @@
   height: 100%;
 }
 
-.brandHolder,
+.catholder,
 .inputDiv {
   align-items: center;
 }
@@ -47,15 +46,15 @@
   width: 200px;
 }
 
-.brandFont {
+.catFont {
   font-size: 2rem;
 }
 
-input .brandINPUT {
+input .catINPUT {
   color: black;
 }
 
-.brandINPUT {
+.catINPUT {
   width: 40px;
   text-align: center;
 }

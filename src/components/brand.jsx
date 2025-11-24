@@ -3,7 +3,8 @@ import styles from "../css/brand.module.css";
 
 export default function BrandPage() {
   const { bname } = useParams();
-  const { products, updateCart, cartItems } = useOutletContext();
+  const { products, updateCart, cartItems, setMenuOpenClose } =
+    useOutletContext();
 
   const thisBrandsProducts = products.filter((item) => item.brand === bname);
 
@@ -18,7 +19,7 @@ export default function BrandPage() {
   }
 
   return (
-    <div className={styles.archHolder}>
+    <div className={styles.archHolder} onClick={() => setMenuOpenClose(null)}>
       <div>
         <p className={styles.brandFont}>{`${bname
           .slice(0, 1)
@@ -45,14 +46,13 @@ export default function BrandPage() {
             )}
             <p>${item.price}</p>
             <div className={styles.inputDiv}>
-              <p>Add</p>
               <input
                 type="number"
                 onChange={(e) => updateCart(item.id, Number(e.target.value))}
                 className={styles.brandINPUT}
                 defaultValue={thisItemsQnty(item)}
               ></input>
-              <p>to bag</p>
+              <p>in bag</p>
             </div>
           </div>
         ))}

@@ -4,7 +4,9 @@
 .cartItems,
 .cartItems > div,
 .orderSum,
-.orderSumChildren {
+.orderSumChildren,
+.emptyBag,
+.parent {
   display: flex;
 }
 
@@ -91,11 +93,6 @@
 .orderSumChildren:last-of-type {
   font-size: 1.5rem;
 }
-
-/* .checkOut {
-  padding-top: 20px;
-} */
-
 .btn {
   height: 50px;
   width: 100%;
@@ -104,4 +101,11 @@
   background-color: rgb(124, 124, 124);
   border-style: none;
   border-radius: 20px;
+}
+
+.parent {
+  height: 500px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }

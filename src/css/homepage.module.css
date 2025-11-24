@@ -16,6 +16,7 @@
 .imgTainer {
   background-image: url("../imgs/impres.jpg");
   height: 700px;
+  margin-bottom: 25px;
 }
 
 .featured {

@@ -3,13 +3,8 @@ import styles from "../css/cart.module.css";
 import truck from "../imgs/truck.jpg";
 
 export default function Cart() {
-  const {
-    cartTotal,
-    cartItems,
-    updateCart,
-    updateCartItems,
-    products,
-  } = useOutletContext();
+  const { cartTotal, cartItems, updateCart, updateCartItems, products } =
+    useOutletContext();
 
   function deleteItem(thisItem) {
     const updatedCartWithDelete = cartItems.filter(
@@ -18,7 +13,7 @@ export default function Cart() {
     updateCartItems(updatedCartWithDelete);
   }
 
-  function cartMoneyTotal() {
+  const totalAmount = () => {
     let total = 0;
     cartItems.forEach((itemInCart) => {
       const actualProductPrice = products.find(
@@ -29,12 +24,12 @@ export default function Cart() {
     });
 
     return total;
-  }
+  };
 
   return (
-    <div>
+    <div className={styles.parent}>
       {cartItems.length === 0 ? (
-        <p>Your bag is empty</p>
+        <div className={styles.emptyBag}>Your bag is empty :&#40;</div>
       ) : (
         <div className={styles.cartTainer}>
           <div className={styles.left}>
@@ -99,7 +94,7 @@ export default function Cart() {
               </div>
               <div className={styles.orderSumChildren}>
                 <p>Estimated Total</p>
-                {/* <p>${}</p> */}
+                <p>${totalAmount}</p>
               </div>
             </div>
             <div className={styles.checkOut}>

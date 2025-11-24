@@ -1,9 +1,10 @@
 import { useParams, useOutletContext } from "react-router";
-import styles from "../css/brand.module.css";
+import styles from "../css/tags.module.css";
 
 export default function TagsPage() {
   const { tname } = useParams();
-  const { products, updateCart, menuState, cartItems } = useOutletContext();
+  const { products, updateCart, setMenuOpenClose, cartItems } =
+    useOutletContext();
 
   const thisTagProducts = products.filter((item) =>
     item.tag_list.includes(tname)
@@ -19,7 +20,7 @@ export default function TagsPage() {
     }
   }
   return (
-    <div className={styles.archHolder} onClick={() => menuState(null)}>
+    <div className={styles.archHolder} onClick={() => setMenuOpenClose(null)}>
       <div>
         <p className={styles.tagFont}>{`${tname
           .slice(0, 1)
@@ -27,7 +28,7 @@ export default function TagsPage() {
       </div>
       <div className={styles.momTagHolder}>
         {thisTagProducts.map((item) => (
-          <div className={styles.catholder} key={item.id}>
+          <div className={styles.tagholder} key={item.id}>
             <div className={styles.imageHold}>
               <img
                 className={styles.IMG}
@@ -46,14 +47,13 @@ export default function TagsPage() {
             )}
             <p>${item.price}</p>
             <div className={styles.inputDiv}>
-              <p>Add</p>
               <input
                 type="number"
                 onChange={(e) => updateCart(item.id, Number(e.target.value))}
                 className={styles.tagINPUT}
                 defaultValue={thisItemsQnty(item)}
               ></input>
-              <p>to bag</p>
+              <p>in bag</p>
             </div>
           </div>
         ))}

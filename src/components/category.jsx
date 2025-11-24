@@ -1,9 +1,10 @@
 import { useParams, useOutletContext } from "react-router";
-import styles from "../css/brand.module.css";
+import styles from "../css/category.module.css";
 
 export default function CategoryPage() {
   const { cname } = useParams();
-  const { products, updateCart, cartItems } = useOutletContext();
+  const { products, updateCart, cartItems, setMenuOpenClose } =
+    useOutletContext();
 
   const thisCatProducts = products.filter((item) => item.category === cname);
 
@@ -18,7 +19,7 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className={styles.archHolder}>
+    <div className={styles.archHolder} onClick={() => setMenuOpenClose(null)}>
       <div>
         <p className={styles.catFont}>{`${cname
           .slice(0, 1)
@@ -45,14 +46,13 @@ export default function CategoryPage() {
             )}
             <p>${item.price}</p>
             <div className={styles.inputDiv}>
-              <p>Add</p>
               <input
                 type="number"
                 onChange={(e) => updateCart(item.id, Number(e.target.value))}
                 className={styles.catINPUT}
                 defaultValue={thisItemsQnty(item)}
               ></input>
-              <p>to bag</p>
+              <p>in bag</p>
             </div>
           </div>
         ))}
