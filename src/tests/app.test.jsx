@@ -1,16 +1,28 @@
 import { it, expect, vi } from "vitest";
-import { render, waitFor } from "@testing-library/react";
+import { render, waitFor, screen } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router";
 import App from "../App";
 import FakeOutlet from "./products.test";
 
 const fakeProducts = [
-  { brand: "Nars", product: "bouncy blush", category: "blush", tag_list: "natural", price: 4.99 },
-  { brand: "l'orEal", product: "sun kissed", category: "bronzer", tag_list: "", price: 5.99 },
   {
-    brand: null,
+    brand: "nars",
+    product: "bouncy blush",
+    category: "blush",
+    tag_list: "natural",
+    price: 4.99,
+  },
+  {
+    brand: "l'oreal",
+    product: "sun kissed",
+    category: "bronzer",
+    tag_list: "none",
+    price: 5.99,
+  },
+  {
+    brand: "e.l.f.",
     product: "single shadow stick",
-    tag_list = null;
+    tag_list: "none",
     category: "eyes",
     price: 3.99,
   },
@@ -27,7 +39,7 @@ it("runs useEffect + updates products, category, + clean beauty", async () => {
     <MemoryRouter initialEntries={["/"]}>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route element={<FakeOutlet />}></Route>
+          <Route index element={<FakeOutlet />}></Route>
         </Route>
       </Routes>
     </MemoryRouter>
