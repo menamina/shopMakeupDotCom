@@ -14,7 +14,12 @@ export default function Navi({
 }) {
   return (
     <nav className={styles.naviHolder}>
-      <div className={styles.preShop} onClick={() => menuState(null)}>
+      <div
+        role="preShop"
+        aria-label="close menu"
+        className={styles.preShop}
+        onClick={() => menuState(null)}
+      >
         <div>
           <p>Free shipping on all orders!</p>
         </div>

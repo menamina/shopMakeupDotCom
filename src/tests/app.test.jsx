@@ -5,11 +5,12 @@ import App from "../App";
 import FakeOutlet from "./products.test";
 
 const fakeProducts = [
-  { brand: "Nars", product: "bouncy blush", category: "blush", price: 4.99 },
-  { brand: "l'orEal", product: "sun kissed", category: "bronzer", price: 5.99 },
+  { brand: "Nars", product: "bouncy blush", category: "blush", tag_list: "natural", price: 4.99 },
+  { brand: "l'orEal", product: "sun kissed", category: "bronzer", tag_list: "", price: 5.99 },
   {
     brand: null,
     product: "single shadow stick",
+    tag_list = null;
     category: "eyes",
     price: 3.99,
   },
@@ -37,7 +38,7 @@ it("runs useEffect + updates products, category, + clean beauty", async () => {
   });
 
   const productsText = await screen.findByTestId("products");
-  const categoriesText = await screen.findByTestId("categories");
+  const categoriesText = await screen.findByTestId("category");
   const cleanBeautyText = await screen.findByTestId("cleanBeauty");
 
   const products = JSON.parse(productsText.textContent);
