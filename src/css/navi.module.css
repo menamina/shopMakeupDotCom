@@ -101,7 +101,8 @@
 
 .shopCategories:hover,
 .track:hover,
-.gift:hover {
+.gift:hover,
+.login:hover {
   cursor: pointer;
 }
 

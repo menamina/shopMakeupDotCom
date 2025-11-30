@@ -13,17 +13,16 @@ export default function Login({ updateSignIn, updateSignUp }) {
         ></img>
       </div>
       <div className={styles.loginForm}>
-        <p>Sign in</p>
+        <p className={styles.signInFont}>Sign in</p>
         <form>
-          <div>
+          <div className={styles.formFlexColumn}>
             <label htmlFor="email">Email address*</label>
-            <input type="email" required />
+            <input type="email" required className={styles.input} />
           </div>
-          <div>
+          <div className={styles.formFlexColumn}>
             <label htmlFor="password">Password*</label>
-            <input type="text" required />
+            <input type="text" required className={styles.input} />
           </div>
-
           <button
             className={styles.signIn}
             onClick={(e) => {
@@ -35,13 +34,14 @@ export default function Login({ updateSignIn, updateSignUp }) {
           </button>
         </form>
 
-        <div>Don't have an account?</div>
+        <div className={styles.dontHave}>Don't have an account?</div>
 
         <button
           onClick={() => {
             updateSignIn((prev) => !prev);
             updateSignUp((prev) => !prev);
           }}
+          className={styles.signUp}
         >
           Sign up
         </button>
