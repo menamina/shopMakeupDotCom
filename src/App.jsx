@@ -49,6 +49,7 @@ function App() {
         .map((item) => ({ id: item.id, qty: Number(item.qty) }));
 
       return sanitizedCart;
+      // ^^ sanitized cart is what the initial val of cartItems is either the actual items or []
     } catch (error) {
       console.error("Failed to restore cart from storage", error);
       return [];

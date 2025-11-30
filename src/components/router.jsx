@@ -5,6 +5,7 @@ import BrandPage from "./brand";
 import CategoryPage from "./category";
 import TagsPage from "./cleanBeautyTags";
 import Cart from "./cart";
+import Login from "./login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "Category/:cname", element: <CategoryPage /> },
       { path: "Tags/:tname", element: <TagsPage /> },
       { path: "Cart", element: <Cart /> },
+      { path: "Login", element: <Login /> },
     ],
   },
 ]);

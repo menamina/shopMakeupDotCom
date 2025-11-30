@@ -64,9 +64,9 @@ export default function Navi({
           </div>
         </div>
         <div className={styles.rNavi}>
-          {/* <Link to="login">
+          <Link to={`/Login`}>
             <img className={styles.login} src={Login} alt="login icon"></img>{" "}
-          </Link> */}
+          </Link>
           <Link to={`/Cart`} className="cart" onClick={() => menuState(null)}>
             <div className="cartHolder">
               <div className={styles.cartTotal}>{cartTotal}</div>
