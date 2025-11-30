@@ -140,11 +140,11 @@ function App() {
   console.log(apiErr);
 
   if (wantToSignIn) {
-    return <Login />;
+    return <Login updateSignIn={updateSignIn} updateSignUp={updateSignUp} />;
   }
 
   if (wantToSignUp) {
-    return <SignUp />;
+    return <SignUp updateSignUp={updateSignUp} />;
   }
 
   return (
@@ -171,8 +171,6 @@ function App() {
           updateCartItems,
           setOpenMenu,
           setMenuOpenClose,
-          updateSignIn,
-          updateSignUp,
         }}
       />
       <Footer menuState={setOpenMenu} />

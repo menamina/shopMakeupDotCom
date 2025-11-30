@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { useOutletContext } from "react-router";
 import styles from "../css/signUp.module.css";
 import Cake from "../imgs/cake.png";
 
-export default function SignUp() {
-  const { updateSignUp } = useOutletContext();
+export default function SignUp({ updateSignUp }) {
   return (
     <div className={StyleSheet.signUpContainer}>
       <div>
@@ -26,7 +24,7 @@ export default function SignUp() {
         <div>
           <div>
             <label htmlFor="email">First name*</label>
-            <input type="email" required />
+            <input type="text" required />
           </div>
           <div>
             <label htmlFor="password">Last name*</label>
@@ -39,9 +37,16 @@ export default function SignUp() {
           <label htmlFor="password">Password*</label>
           <input type="text" required />
         </div>
-        <Link to="/" onClick={() => updateSignUp(false)}>
-          <button className={styles.signIn}>Create account</button>
-        </Link>
+
+        <button
+          className={styles.createAccount}
+          onClick={(e) => {
+            e.preventDefault;
+            updateSignUp(false);
+          }}
+        >
+          Create account
+        </button>
       </form>
     </div>
   );

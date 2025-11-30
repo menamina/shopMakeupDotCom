@@ -65,9 +65,12 @@ export default function Navi({
           </div>
         </div>
         <div className={styles.rNavi}>
-          <Link to={`/Login`} onClick={() => setSignIn(true)}>
-            <img className={styles.login} src={Login} alt="login icon"></img>{" "}
-          </Link>
+          <img
+            className={styles.login}
+            src={Login}
+            alt="login icon"
+            onClick={() => setSignIn((prev) => !prev)}
+          ></img>{" "}
           <Link to={`/Cart`} className="cart" onClick={() => menuState(null)}>
             <div className="cartHolder">
               <div className={styles.cartTotal}>{cartTotal}</div>

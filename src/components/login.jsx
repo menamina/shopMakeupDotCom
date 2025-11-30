@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { useOutletContext } from "react-router";
 import styles from "../css/login.module.css";
 import Cake from "../imgs/cake.png";
 
-export default function Login() {
-  const { updateSignIn, updateSignUp } = useOutletContext();
+export default function Login({ updateSignIn, updateSignUp }) {
   return (
     <div className={styles.loginContainer}>
       <div>
@@ -25,23 +23,28 @@ export default function Login() {
             <label htmlFor="password">Password*</label>
             <input type="text" required />
           </div>
-          <Link to="/">
-            <button
-              className={styles.signIn}
-              onClick={() => updateSignIn(false)}
-            >
-              Sign in
-            </button>
-          </Link>
+
+          <button
+            className={styles.signIn}
+            onClick={(e) => {
+              e.preventDefault();
+              updateSignIn((prev) => !prev);
+            }}
+          >
+            Sign in
+          </button>
         </form>
 
         <div>Don't have an account?</div>
-        <Link
-          to={`/SignUp`}
-          onClick={(() => updateSignIn(false), updateSignUp(true))}
+
+        <button
+          onClick={() => {
+            updateSignIn((prev) => !prev);
+            updateSignUp((prev) => !prev);
+          }}
         >
-          <div>Sign up</div>
-        </Link>
+          Sign up
+        </button>
       </div>
     </div>
   );
