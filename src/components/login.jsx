@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useOutletContext } from "react-router";
 import styles from "../css/login.module.css";
 import Cake from "../imgs/cake.png";
 
 export default function Login() {
+  const { updateSignIn, updateSignUp } = useOutletContext();
   return (
     <div className={styles.loginContainer}>
       <div>
@@ -25,12 +26,20 @@ export default function Login() {
             <input type="text" required />
           </div>
           <Link to="/">
-            <button className={styles.signIn}>Sign in</button>
+            <button
+              className={styles.signIn}
+              onClick={() => updateSignIn(false)}
+            >
+              Sign in
+            </button>
           </Link>
         </form>
 
         <div>Don't have an account?</div>
-        <Link to={`/SignUp`}>
+        <Link
+          to={`/SignUp`}
+          onClick={(() => updateSignIn(false), updateSignUp(true))}
+        >
           <div>Sign up</div>
         </Link>
       </div>

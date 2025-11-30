@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import Navi from "./components/nav.jsx";
 import Footer from "./components/footer.jsx";
+import Login from "./components/login.jsx";
+import SignUp from "./components/signUp.jsx";
 import "./css/app.css";
 
 export function noDupes(list) {
@@ -25,6 +27,8 @@ function App() {
   const [products, updateProducts] = useState([]);
   const [categories, updateCategories] = useState([]);
   const [cleanBeauty, updateCleanBeauty] = useState([]);
+  const [wantToSignIn, updateSignIn] = useState(false);
+  const [wantToSignUp, updateSignUp] = useState(false);
   const [apiErr, updateApiErr] = useState("");
 
   const [cartItems, updateCartItems] = useState(() => {
@@ -135,6 +139,14 @@ function App() {
 
   console.log(apiErr);
 
+  if (wantToSignIn) {
+    return <Login />;
+  }
+
+  if (wantToSignUp) {
+    return <SignUp />;
+  }
+
   return (
     <div className="archContainer">
       <Navi
@@ -145,6 +157,7 @@ function App() {
         isOpen={openMenu}
         cartTotal={cartTotal}
         updateCartItems={updateCartItems}
+        setSignIn={updateSignIn}
       />
       <Outlet
         context={{
@@ -158,6 +171,8 @@ function App() {
           updateCartItems,
           setOpenMenu,
           setMenuOpenClose,
+          updateSignIn,
+          updateSignUp,
         }}
       />
       <Footer menuState={setOpenMenu} />

@@ -11,6 +11,7 @@ export default function Navi({
   menuState,
   isOpen,
   cartTotal,
+  setSignIn,
 }) {
   return (
     <nav className={styles.naviHolder}>
@@ -64,7 +65,7 @@ export default function Navi({
           </div>
         </div>
         <div className={styles.rNavi}>
-          <Link to={`/Login`}>
+          <Link to={`/Login`} onClick={() => setSignIn(true)}>
             <img className={styles.login} src={Login} alt="login icon"></img>{" "}
           </Link>
           <Link to={`/Cart`} className="cart" onClick={() => menuState(null)}>
