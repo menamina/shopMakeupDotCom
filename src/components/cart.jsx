@@ -12,9 +12,8 @@ export default function Cart() {
     );
     updateCartItems(updatedCartWithDelete);
   }
-
+  let total = 0;
   const totalAmount = () => {
-    let total = 0;
     cartItems.forEach((itemInCart) => {
       const actualProductPrice = products.find(
         (item) => item.id === itemInCart.id
@@ -22,8 +21,6 @@ export default function Cart() {
       const addToTotal = Number(actualProductPrice.price) * itemInCart.qty;
       total += addToTotal;
     });
-
-    return total;
   };
 
   return (
@@ -94,7 +91,7 @@ export default function Cart() {
               </div>
               <div className={styles.orderSumChildren}>
                 <p>Estimated Total</p>
-                <p>${totalAmount}</p>
+                <p>${total}</p>
               </div>
             </div>
             <div className={styles.checkOut}>

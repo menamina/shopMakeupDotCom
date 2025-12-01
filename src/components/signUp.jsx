@@ -4,7 +4,7 @@ import Cake from "../imgs/cake.png";
 
 export default function SignUp({ updateSignUp }) {
   return (
-    <div className={StyleSheet.signUpContainer}>
+    <div className={styles.signUpContainer}>
       <div>
         <img
           src={Cake}
@@ -12,32 +12,31 @@ export default function SignUp({ updateSignUp }) {
           alt="brand logo - cake"
         ></img>
       </div>
-      <div>
-        <div>Create and account</div>
+      <div className={styles.signUpBlurb}>
+        <div className={styles.create}>Create and account</div>
         <div>
           Join our loyalty program to earn points, redeem rewards, and more for
           free!
         </div>
       </div>
-      <form>
+      <form className={styles.signUpForm}>
         <p>* Indicates a required field</p>
-        <div>
-          <div>
-            <label htmlFor="email">First name*</label>
-            <input type="text" required />
-          </div>
-          <div>
-            <label htmlFor="password">Last name*</label>
-            <input type="text" required />
-          </div>
+        <div className={styles.formFlexColumn}>
+          <label htmlFor="email">First name*</label>
+          <input type="text" required className={styles.input} />
+        </div>
+        <div className={styles.formFlexColumn}>
+          <label htmlFor="password">Last name*</label>
+          <input type="text" required className={styles.input} />
+        </div>
+        <div className={styles.formFlexColumn}>
           <label htmlFor="email">Email address*</label>
-          <input type="email" required />
+          <input type="email" required className={styles.input} />
         </div>
-        <div>
+        <div className={styles.formFlexColumn}>
           <label htmlFor="password">Password*</label>
-          <input type="text" required />
+          <input type="text" required className={styles.input} />
         </div>
-
         <button
           className={styles.createAccount}
           onClick={(e) => {
