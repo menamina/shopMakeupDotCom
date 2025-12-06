@@ -70,10 +70,6 @@
   font-style: italic;
 }
 
-.preShop {
-  width: 100%;
-}
-
 .cake {
   width: 80px;
   max-height: 80px;
@@ -104,6 +100,10 @@
 .gift:hover,
 .login:hover {
   cursor: pointer;
+}
+
+.shopCategories {
+  font-size: 1rem;
 }
 
 .naviHolder {
@@ -147,4 +147,22 @@ a {
   font-size: 0.8rem;
   justify-self: center;
   align-self: center;
+}
+
+@media (max-width: 700px) {
+  .preShop {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid red;
+  }
+  .navi {
+    padding: 0;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .lNavi {
+    justify-content: space-between;
+  }
 }
