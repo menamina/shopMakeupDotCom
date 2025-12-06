@@ -12,10 +12,11 @@ export default function Cart() {
     );
     updateCartItems(updatedCartWithDelete);
   }
-  const total = cartItems.reduce((sum, next) => {
-    const product = products.find((p) => p.id === next.id);
-    if (!product) return sum;
-    return sum + Number(product.price) * next.qty;
+  const total = cartItems.reduce((sum, itemInCart) => {
+    const product = products.find((item) => item.id === itemInCart.id);
+    const price = Number(product?.price);
+    if (!product || Number.isNaN(price)) return sum;
+    return sum + price * itemInCart.qty;
   }, 0);
 
   return (
@@ -42,8 +43,15 @@ export default function Cart() {
             </div>
             {cartItems.map((cartItem) => {
               const product = products.find((item) => item.id === cartItem.id);
+              if (!product) {
+                return (
+                  <div className={styles.cartItems} key={cartItem.id}>
+                    <p>Item details loading...</p>
+                  </div>
+                );
+              }
               return (
-                <div className={styles.cartItems}>
+                <div className={styles.cartItems} key={cartItem.id}>
                   <div>
                     <img
                       src={product.image_link}
@@ -56,7 +64,7 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className={styles.addDelete}>
-                    <div> </div>
+                    <label>Quantity</label>
                     <input
                       type="number"
                       onChange={(e) =>
@@ -87,7 +95,7 @@ export default function Cart() {
               </div>
               <div className={styles.orderSumChildren}>
                 <p>Estimated Total</p>
-                <p>${total}</p>
+                <p>${total.toFixed(2)}</p>
               </div>
             </div>
             <div className={styles.checkOut}>
