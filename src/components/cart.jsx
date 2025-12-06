@@ -12,16 +12,11 @@ export default function Cart() {
     );
     updateCartItems(updatedCartWithDelete);
   }
-  let total = 0;
-  const totalAmount = () => {
-    cartItems.forEach((itemInCart) => {
-      const actualProductPrice = products.find(
-        (item) => item.id === itemInCart.id
-      );
-      const addToTotal = Number(actualProductPrice.price) * itemInCart.qty;
-      total += addToTotal;
-    });
-  };
+  const total = cartItems.reduce((sum, next) => {
+    const product = products.find((p) => p.id === next.id);
+    if (!product) return sum;
+    return sum + Number(product.price) * next.qty;
+  }, 0);
 
   return (
     <div className={styles.parent}>
@@ -61,6 +56,7 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className={styles.addDelete}>
+                    <div> </div>
                     <input
                       type="number"
                       onChange={(e) =>
