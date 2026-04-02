@@ -1,43 +1,62 @@
 import { useParams, useOutletContext } from "react-router";
-
-function clean(thisThing) {
-  if (!thisThing) return "";
-  const cleaned = thisThing
-    .trim()
-    .toLowerCase()
-    .replaceAll("_", "")
-    .replaceAll(" ", "");
-  return cleaned;
-}
+import styles from "../css/brand.module.css";
 
 export default function BrandPage() {
   const { bname } = useParams();
-  const { products, updateCart } = useOutletContext();
-  const specificBrandProducts = products.filter(
-    (obj) => clean(obj.brand) === clean(bname)
-  );
+  const { products, updateCart, cartItems, setMenuOpenClose } =
+    useOutletContext();
+
+  const thisBrandsProducts = products.filter((item) => item.brand === bname);
+
+  function thisItemsQnty(item) {
+    const thisItemsId = item.id;
+    const found = cartItems.find((item) => item.id === thisItemsId);
+    if (found) {
+      return found.qty;
+    } else {
+      return 0;
+    }
+  }
 
   return (
-    <div>
-      {specificBrandProducts.map((item) => (
-        <div className="BrandHolder" key={item.id}>
-          <img
-            src={item.image_link}
-            alt={`${item.brand} ${item.category}`}
-          ></img>
-          <p>{item.brand}</p>
-          <p>{item.name}</p>
-          <p>${item.price}</p>
-          <div>
-            <p>Add</p>
-            <input
-              type="number"
-              onChange={(e) => updateCart(item, e.target.value)}
-            ></input>
-            <p>to bag</p>
+    <div className={styles.archHolder} onClick={() => setMenuOpenClose(null)}>
+      <div>
+        <p className={styles.brandFont}>{`${bname
+          .slice(0, 1)
+          .toUpperCase()}${bname.slice(1)}`}</p>
+      </div>
+      <div className={styles.momBrandHolder}>
+        {thisBrandsProducts.map((item) => (
+          <div className={styles.brandHolder} key={item.id}>
+            <div className={styles.imageHold}>
+              <img
+                className={styles.IMG}
+                src={item.image_link}
+                alt={`${item.brand} ${item.category}`}
+              ></img>
+            </div>
+            <p>{`${bname.slice(0, 1).toUpperCase()}${bname.slice(1)}`}</p>
+            <p>{`${item.name.slice(0, 1).toUpperCase()}${item.name.slice(
+              1
+            )}`}</p>
+            {item.product_colors.length === 1 ? null : (
+              <p className={styles.colorLength}>
+                {item.product_colors.length} colors
+              </p>
+            )}
+            <p>${item.price}</p>
+            <div className={styles.inputDiv}>
+              <input
+                type="number"
+                onChange={(e) => updateCart(item.id, Number(e.target.value))}
+                className={styles.brandINPUT}
+                defaultValue={thisItemsQnty(item)}
+              ></input>
+              <p>in bag</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,122 @@
+.cartTainer,
+.cartTainer > div,
+.left > div:first-child,
+.cartItems,
+.cartItems > div,
+.orderSum,
+.orderSumChildren,
+.emptyBag,
+.parent {
+  display: flex;
+}
+
+.cartTainer > div,
+.cartContainer > div:last-child,
+.cartItems,
+.orderSum {
+  flex-direction: column;
+}
+
+.left > div:first-child {
+  align-items: center;
+}
+
+.cartTainer,
+.orderSumChildren {
+  justify-content: space-between;
+}
+
+.cartTainer {
+  width: 100%;
+  padding: 40px 0;
+  gap: 48px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.left {
+  flex: 1 1 520px;
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 1%;
+}
+
+.right {
+  flex: 1 1 320px;
+}
+
+.truck {
+  width: 100px;
+}
+
+.left > div:first-child {
+  border-bottom: 1px solid rgb(210, 210, 210);
+  padding: 20px;
+  gap: 20px;
+}
+
+.ship {
+  font-weight: 500;
+}
+
+.cartIMGS {
+  width: 70px;
+  height: 100%;
+}
+
+.cartItems {
+  padding: 20px;
+  gap: 30px;
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.cartItems > div:first-child {
+  gap: 20px;
+}
+
+.addDelete {
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.addDelete input {
+  width: 56px;
+  padding: 4px 8px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.orderSum {
+  gap: 7px;
+  padding-bottom: 20px;
+}
+
+.sumTitle {
+  padding-bottom: 20px;
+}
+
+.ship,
+.sumTitle,
+.orderSumChildren:last-of-type {
+  font-size: 1.5rem;
+}
+.btn {
+  height: 50px;
+  width: 100%;
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgb(124, 124, 124);
+  border-style: none;
+  border-radius: 20px;
+}
+
+.parent {
+  min-height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 160px;
+  padding-right: 160px;
+}

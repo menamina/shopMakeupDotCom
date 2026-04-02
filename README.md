@@ -1,16 +1,22 @@
-# React + Vite
+# Welcome to CakeFace, a mock beauty retailer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Functionalities
 
-Currently, two official plugins are available:
+- Browse plenty of cosmetic and beauty options with a very slow, but functioning, API by **brand**, **category**, and **tags** such as: cruelty free, natural, organic, etc
+- Local storage saves your cart for you
+- Note: the API is outdated and any image that you see missing is due to the api
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Built with
 
-## React Compiler
+- Node.js
+- Express
+- React
+- Local storage
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Looking back
 
-## Expanding the ESLint configuration
+- I genuinely enjoyed the process of creating this application. I love makeup and always thought it would be fun to make a mock retail site since I enjoy the entire process of browsing and shopping. A lot of what makes someone a customer of a particular product or brand is the aesthetics not only of that physical item but also the website used to browse those items. Although the website is minimal it is beautiful (in my opinion) and to the point.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### What I could have done better
+
+- I struggled a bit with API's when I started this project. Now with the knowledge I have I could have fetched multiple times to make the app faster - but nonetheless this still was a great learning project for me particularly with fetching and API's.

@@ -11,10 +11,16 @@ export default function Navi({
   menuState,
   isOpen,
   cartTotal,
+  setSignIn,
 }) {
   return (
     <nav className={styles.naviHolder}>
-      <div className={styles.preShop} onClick={() => menuState(null)}>
+      <div
+        role="preShop"
+        aria-label="close menu"
+        className={styles.preShop}
+        onClick={() => menuState(null)}
+      >
         <div>
           <p>Free shipping on all orders!</p>
         </div>
@@ -59,12 +65,15 @@ export default function Navi({
           </div>
         </div>
         <div className={styles.rNavi}>
-          <Link to="login">
-            <img className={styles.login} src={Login} alt="login icon"></img>{" "}
-          </Link>
-          <Link to={`/Cart`} className="cart">
+          <img
+            className={styles.login}
+            src={Login}
+            alt="login icon"
+            onClick={() => setSignIn((prev) => !prev)}
+          ></img>{" "}
+          <Link to={`/Cart`} className="cart" onClick={() => menuState(null)}>
             <div className="cartHolder">
-              <div>{cartTotal === 0 ? "" : cartTotal}</div>
+              <div className={styles.cartTotal}>{cartTotal}</div>
               <img
                 className={styles.bag}
                 src={Bag}
@@ -75,22 +84,40 @@ export default function Navi({
         </div>
       </div>
 
-      <div className={styles.displayNavClick}>
+      <div
+        className={
+          isOpen !== null
+            ? styles.displayNavClick
+            : `${styles.displayNavClick.hidden}`
+        }
+      >
         {isOpen === "clean beauty" ? (
           <div className={`${styles.allNavsClicked} ${styles.show}`}>
             {byCleanBeauty.map((tag) => (
-              <Link to={`/Tags/${tag}`} className={styles.tag} key={tag}>
-                {tag}
+              <Link
+                to={`/Tags/${tag}`}
+                className={styles.tag}
+                key={tag}
+                onClickCapture={() => menuState(null)}
+              >
+                {tag.slice(0, 1).toUpperCase()}
+                {tag.slice(1)}
               </Link>
             ))}
           </div>
         ) : null}
 
         {isOpen === "brands" ? (
-          <div className={styles.allNavsClicked}>
+          <div className={`${styles.allNavsClicked} ${styles.show}`}>
             {byBrand.map((brand) => (
-              <Link to={`/Brand/${brand}`} className={styles.brand} key={brand}>
-                {brand}
+              <Link
+                to={`/Brand/${brand}`}
+                className={styles.brand}
+                key={brand}
+                onClickCapture={() => menuState(null)}
+              >
+                {brand.slice(0, 1).toUpperCase()}
+                {brand.slice(1)}
               </Link>
             ))}
           </div>
@@ -99,8 +126,14 @@ export default function Navi({
         {isOpen === "category" ? (
           <div className={styles.allNavsClicked}>
             {byCategory.map((cat) => (
-              <Link to={`/Category/${cat}`} className={styles.cat} key={cat}>
-                {cat}
+              <Link
+                to={`/Category/${cat}`}
+                className={styles.cat}
+                key={cat}
+                onClickCapture={() => menuState(null)}
+              >
+                {cat.slice(0, 1).toUpperCase()}
+                {cat.slice(1)}
               </Link>
             ))}
           </div>

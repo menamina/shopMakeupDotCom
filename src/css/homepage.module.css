@@ -1,5 +1,6 @@
 .imgTainer {
   display: flex;
+  margin-top: 30px;
 }
 .imgTainer {
   justify-content: center;
@@ -15,4 +16,21 @@
 .imgTainer {
   background-image: url("../imgs/impres.jpg");
   height: 700px;
+  margin-bottom: 25px;
+}
+
+.featured {
+  height: 500px;
+}
+
+.IMGS {
+  width: 40px;
+  height: 50px;
+}
+
+@media (max-width: 700px) {
+  .cakeFace {
+    font-size: 3rem;
+    text-align: center;
+  }
 }

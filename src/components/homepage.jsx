@@ -9,9 +9,6 @@ export default function HomePage() {
       <div className={styles.imgTainer}>
         <h3 className={styles.cakeFace}>Cakeface.</h3>
       </div>
-      <div>
-        <p>New + Featured</p>
-      </div>
     </div>
   );
 }

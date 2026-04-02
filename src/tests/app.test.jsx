@@ -1,20 +1,34 @@
 import { it, expect, vi } from "vitest";
-import { render, waitFor } from "@testing-library/react";
-import { MemoryRouter } from "react-router";
+import { render, waitFor, screen } from "@testing-library/react";
+import { MemoryRouter, Routes, Route } from "react-router";
 import App from "../App";
+import FakeOutlet from "./products.test";
 
 const fakeProducts = [
-  { brand: "nars", product: "bouncy blush", category: "blush", price: 4.99 },
-  { brand: "l'oreal", product: "sun kissed", category: "bronzer", price: 5.99 },
   {
-    brand: "e.l.f",
+    brand: "nars",
+    product: "bouncy blush",
+    category: "blush",
+    tag_list: "natural",
+    price: 4.99,
+  },
+  {
+    brand: "l'oreal",
+    product: "sun kissed",
+    category: "bronzer",
+    tag_list: "none",
+    price: 5.99,
+  },
+  {
+    brand: "e.l.f.",
     product: "single shadow stick",
+    tag_list: "none",
     category: "eyes",
     price: 3.99,
   },
 ];
 
-it("fetches products", async () => {
+it("runs useEffect + updates products, category, + clean beauty", async () => {
   global.fetch = vi.fn(() =>
     Promise.resolve({
       json: () => Promise.resolve(fakeProducts),
@@ -22,12 +36,38 @@ it("fetches products", async () => {
   );
 
   render(
-    <MemoryRouter>
-      <App />
+    <MemoryRouter initialEntries={["/"]}>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<FakeOutlet />}></Route>
+        </Route>
+      </Routes>
     </MemoryRouter>
   );
 
   await waitFor(() => {
     expect(global.fetch).toHaveBeenCalledTimes(1);
   });
+
+  const productsText = await screen.findByTestId("products");
+  const categoriesText = await screen.findByTestId("category");
+  const cleanBeautyText = await screen.findByTestId("cleanBeauty");
+
+  const products = JSON.parse(productsText.textContent);
+  const categories = JSON.parse(categoriesText.textContent);
+  const cleanBeauty = JSON.parse(cleanBeautyText.textContent);
+
+  expect(
+    products.every((product) => product.brand !== null && product.brand !== "")
+  ).toBe(true);
+  expect(
+    categories.every(
+      (product) => product.category !== null && product.category !== ""
+    )
+  ).toBe(true);
+  expect(
+    cleanBeauty.every(
+      (product) => product.tag_list !== null && product.tag_list !== ""
+    )
+  ).toBe(true);
 });

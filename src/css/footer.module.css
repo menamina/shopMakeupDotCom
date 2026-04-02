@@ -19,10 +19,14 @@
 }
 
 .footerHolder {
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
   height: 300px;
   background-color: black;
+  padding: 50px 160px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 /* imgs */
@@ -76,13 +80,20 @@ p.footerTitle {
   padding-bottom: 30px;
 }
 
-input {
+.input {
   background: transparent;
   border: none;
   outline: none;
   color: white;
 }
 
-input::placeholder {
+.input::placeholder {
   color: white;
+}
+
+@media (max-width: 700px) {
+  .footerHolder {
+    height: min-content;
+    justify-content: center;
+  }
 }

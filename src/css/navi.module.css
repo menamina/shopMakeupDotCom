@@ -13,7 +13,8 @@
 .rNavi,
 .logoNav,
 .navLinks,
-.allNavsClicked {
+.allNavsClicked,
+.displayNavClick {
   display: flex;
 }
 
@@ -34,19 +35,21 @@
 .preShop,
 .navi {
   justify-content: space-between;
-  padding-left: 10rem;
-  padding-right: 10rem;
+  padding-left: 160px;
+  padding-right: 160px;
 }
 
 .naviHolder {
+  justify-content: space-between;
   padding-top: 20px;
-  gap: 30px;
-  height: 100%;
+  height: 150px;
+  position: relative;
 }
 
 .preShop {
   font-size: 0.85rem;
   width: 100%;
+  padding-bottom: 20px;
 }
 
 .TrackGift {
@@ -56,20 +59,15 @@
 .navi {
   width: 100%;
   height: 7rem;
+  background-color: white;
   border-top: 1px solid rgb(210, 210, 210);
   border-bottom: 1px solid rgb(210, 210, 210);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .cakeFace {
   font-style: italic;
-}
-
-.hidden {
-  display: none;
-}
-
-.preShop {
-  width: 100%;
 }
 
 .cake {
@@ -99,6 +97,72 @@
 
 .shopCategories:hover,
 .track:hover,
-.gift:hover {
+.gift:hover,
+.login:hover {
   cursor: pointer;
+}
+
+.shopCategories {
+  font-size: 1rem;
+}
+
+.naviHolder {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+.displayNavClick {
+  background-color: rgb(255, 255, 255);
+  align-self: start;
+  width: 220px;
+  height: 100vh;
+  position: absolute;
+  top: 100%;
+  transform: translateY(10.5px);
+  justify-content: center;
+  overflow: auto;
+}
+
+.displayNavClick.hidden {
+  display: none;
+}
+
+.allNavsClicked {
+  gap: 15px;
+  font-size: 1.5rem;
+  padding-top: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cartHolder {
+  position: relative;
+}
+
+.cartTotal {
+  position: absolute;
+  transform: translateY(2px) translateX(14px);
+  font-size: 0.8rem;
+  justify-self: center;
+  align-self: center;
+}
+
+@media (max-width: 700px) {
+  .preShop {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid red;
+  }
+  .navi {
+    padding: 0;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .lNavi {
+    justify-content: space-between;
+  }
 }

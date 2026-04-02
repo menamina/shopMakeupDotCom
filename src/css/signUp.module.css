@@ -1,0 +1,69 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.signUpContainer,
+.formFlexColumn,
+.signUpForm,
+.signUpBlurb {
+  display: flex;
+}
+
+.signUpContainer,
+.formFlexColumn,
+.signUpForm,
+.signUpBlurb {
+  flex-direction: column;
+}
+
+.signUpContainer {
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.cakeLogo {
+  width: 130px;
+}
+
+.signUpForm {
+  width: 300px;
+  gap: 20px;
+}
+
+.signUpBlurb {
+  width: 300px;
+}
+
+.input {
+  height: 50px;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.input:focus {
+  border: 2px solid black;
+  outline: none;
+}
+
+.createAccount {
+  width: 100%;
+  border-radius: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.create {
+  font-size: 1.5rem;
+  padding-bottom: 15px;
+}
+
+.signUpBlurb > div:last-child {
+  color: gray;
+}
